@@ -1,0 +1,932 @@
+<html>
+<head>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/mailcss/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/mailjs/jquery.min.js"></script>
+<style>
+.input-md {
+	height: 32px;
+}
+
+.mtop {
+	margin-top: 4px;
+}
+
+.table tbody tr td {
+	padding: 4px;
+}
+</style>
+<script>
+
+$(function(){
+	$('#email1').blur(function() {
+		$('input[name=sender]').attr('value',$('#sender').val()+$('#email1').val());
+	});
+	
+	$('#templatename1').blur(function() {
+        $('input[name=template2]').attr('value',$('#template2').val()+$('#templatename1').val());
+    });
+	
+	$( "#mail-to-temp-next" ).click(function() {
+		document.getElementById("mail-to-temp-next").disabled = true;
+	   	var em= document.getElementById("email1").value;      
+		if(em==""||em==null)   
+			{
+			alert("Please enter email");
+		}else{  
+			$( ".map-mail-to-temp" ).addClass('hidden');
+			$( ".map-sms-to-temp" ).removeClass('hidden');
+		}                                  
+	document.getElementById("mail-to-temp-next").disabled = false;                                 
+	});
+});
+
+$(function() {
+	$( "#sms-to-temp-previous" ).click(function() {
+    $( ".map-mail-to-temp" ).removeClass('hidden');
+	$( ".map-sms-to-temp" ).addClass('hidden');
+});
+});
+
+$(function() {
+	$( "#sms-to-temp-next" ).click(function(){
+		var mainJson={};
+		var arrSubject =[];
+		var arrBody=[];
+		var arrAttachment=[];
+		document.getElementById("sms-to-temp-next").disabled = true;
+	
+		var sender=document.getElementById("email1").value;
+	   	mainJson["sender"]=sender;
+		var template = document.getElementById("templatename1").value;   
+		if(template==""||template==null){
+			alert("Please enter Template Name");
+		}
+		else{
+		mainJson["template_name"]=template;
+		var subject= document.getElementsByName("subject");
+		for(var i=0;i<subject.length-1;i++)
+			{
+			arrSubject.push(subject[i].value);
+			}
+		if(arrSubject[0] != ""){
+            mainJson["Subject"] = arrSubject;
+            }
+		
+		var body= document.getElementsByName("body");
+		for(var i=0;i<body.length-1;i++)
+		{
+			arrBody.push(body[i].value);
+		}
+	if(arrBody[0] != ""){
+        mainJson["Body"] = arrBody;
+        }
+	
+	var attachment = document.getElementsByName("attachment1");
+//	alert("attachment.length"+attachment.length);
+	for(var i=0;i<attachment.length-1;i++)
+	{
+		arrAttachment.push(attachment[i].value);
+		// alert("attachment[i]"+attachment[i]);
+		
+	}
+	
+if(arrAttachment[0] != ""){
+    mainJson["attachment"] = arrAttachment;
+    }
+	
+	var match = document.getElementById("match").value;
+	mainJson["match"] = match;
+	
+	
+	 alert("JSON : "+JSON.stringify(mainJson));
+		
+     
+     $.ajax({
+         type : 'POST',
+         url :'<%=request.getContextPath()%>/servlet/service/MapMailToTemp.templ1',
+        data: {
+                result : JSON.stringify(mainJson)                                   
+         },
+         datatype: "json",
+
+success: function (dataa) {
+  
+ // alert(dataa);
+/*  var response=dataa.split("~");
+ if(response[0] == "true"){
+alert("0 == "+response[0]);
+alert("if");
+alert("1 == "+response[1]);
+  email = response[1]; 
+
+	
+ 
+
+}
+else{
+
+alert("Please enter email");
+}   */
+
+
+
+}
+
+
+    });                   
+     
+   
+     $( ".map-sms-to-temp" ).addClass('hidden');
+     $( ".mail-parsing-template" ).removeClass('hidden');
+	
+		}
+		  
+		     document.getElementById("sms-to-temp-next").disabled = false;
+
+
+			
+		
+  
+});
+});
+$(function() {
+	$( "#mail-parsing-previous" ).click(function() {
+    $( ".map-sms-to-temp" ).removeClass('hidden');
+	$( ".mail-parsing-template" ).addClass('hidden');
+});
+});
+$(function() {
+	$( "#mail-parsing-next" ).click(function() {
+		
+		
+		var mainJson={};
+		var arrparse =[];
+		var arrprogram =[];
+		
+		
+	//	document.getElementById("sms-to-temp-next").disabled = true;
+	
+		// alert("in js");
+	 var template2=document.getElementById("templatename1").value;
+	// alert("template="+template2);
+	   mainJson["templateName"]=template2;
+	
+		
+		var x = document.getElementsByName("parse"); 
+	//	alert("x is "+x);
+var optionVal = new Array();
+for (i = 0; i < x.length-1; i++) { 
+    //optionVal.push(x.options[i].text);
+    optionVal.push(x[i].value);
+   //alert("arra "+ x[i].value);
+    
+}
+
+if(optionVal[0] != ""){
+	mainJson["Parse_selected"]=optionVal;
+ }
+
+		var program= document.getElementsByName("program");
+		
+		for(var i=0;i<program.length-1;i++)
+			{
+	arrprogram.push(program[i].value);
+		}
+	if(arrprogram[0] != ""){
+            mainJson["program"] = arrprogram;
+         }
+	var saveprogram=document.getElementById("saveProg").value; 
+	
+	 mainJson["url"] =saveprogram;
+		alert("JSON ="+JSON.stringify(mainJson));
+		
+		
+		
+		 $.ajax({
+	         type : 'POST',
+	         url :'<%=request.getContextPath()%>/servlet/service/MapMailToTemp.templ2',
+	        data: {
+	                result : JSON.stringify(mainJson)                                   
+	         },
+	         datatype: "json",
+
+	success: function (dataa) {
+	  
+	// alert(dataa);
+	//  var response=dataa.split("~");
+	//  if(response[0] == "true"){
+	// alert("0 == "+response[0]);
+	//alert("if");
+//		alert("1 == "+response[1]);
+	//  email = response[1]; 
+
+	
+	  $( ".mail-parsing-template" ).addClass('hidden');
+	$( ".attribute-term-mapping" ).removeClass('hidden');
+
+	
+
+
+	/*
+	}
+	else{
+
+	alert("Please enter email");
+	}   */
+
+	// document.getElementById("sms-to-temp-next").disabled = false;
+	}
+	         
+		 });
+		
+		
+		
+  
+});
+});
+
+$(function() {
+	$( "#schedule-previous" ).click(function() {
+    $( ".attribute-term-mapping" ).removeClass('hidden');
+	$( ".schedule-publication" ).addClass('hidden');
+});
+});
+
+$(function() {
+	$( "#attribute-previous" ).click(function() {
+    $( ".mail-parsing-template" ).removeClass('hidden');
+	$( ".attribute-term-mapping" ).addClass('hidden');
+});
+});
+$(function() {
+	$( "#attribute-next" ).click(function() {
+    $( ".attribute-term-mapping" ).addClass('hidden');
+	$( ".schedule-publication" ).removeClass('hidden');
+});
+});
+$(document).ready(function() {
+$(".addButton").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-buttons'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray),
+		$item   = $clone.find('[name="metadata[]"]');
+         
+});
+});
+$(document).on('click','.removeButton',function(e) {
+	var $row    = $(this).parents('.form-group');
+	$row.remove();
+});
+$(document).on('click','.removeSendby',function(e) {
+	var $row    = $(this).parents('.form-group');
+	$row.remove();
+});
+
+$(document).ready(function() {
+$(".addSendby").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-sendby'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray)
+});
+});
+$(document).on('click','.removeSendby',function(e) {
+	var $row    = $(this).parents('.form-group');
+	$row.remove();
+});
+
+$(document).on('click','.removeProgram',function(e) {
+	var $row    = $(this).parents('.form-group');
+	$row.remove();
+});
+
+$(document).ready(function() {
+$(".addProgram").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-program'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray)
+});
+});
+ $(document).on('click','.removeExtractvalues',function(e) {
+	var $row    = $(this).parents('.form-group');
+	$row.remove();
+});
+
+$(document).ready(function() {
+$(".addExtractvalues").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-extractvalues'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray)
+});
+});
+ $(document).ready(function() {
+$(".addObjectname").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-objectname'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray),
+		$item   = $clone.find('[name="objectname"]');
+         
+});
+});
+$(document).on('click','.removeObjectname',function(e) {
+	var $row    = $(this).parents('.form-group');
+	$row.remove();
+});
+$(document).on('click','.removeSubject',function(e) {
+	var $row    = $(this).parents('.form-group'),
+	$item = $row.find('[name="subject"]');
+	$row.remove();
+});
+
+$(document).ready(function() {
+$(".addSubject").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-subject'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray)
+});
+});
+$(document).on('click','.removeBody',function(e) {
+	var $row    = $(this).parents('.form-group'),
+	$item = $row.find('[name="body"]');
+	$row.remove();
+});
+
+$(document).ready(function() {
+$(".addBody").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-body'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray)
+});
+});
+$(document).on('click','.removeAttachment',function(e) {
+	var $row    = $(this).parents('.form-group');
+	$item = $row.find('[name="attachment1"]');
+	$row.remove();
+});
+
+$(document).ready(function() {
+$(".addAttchment").click(function(){
+	var counter=0;
+	var $textarray = $('#hidden-attachment'),
+		$clone    = $textarray
+						.clone()
+						.removeClass('hidden')
+						.removeAttr('id')
+						.insertBefore($textarray)
+});
+});
+
+ $(document).ready(function(){
+      var i=1;
+     $("#add_row").click(function(){
+      <!-- $('#row'+i).html("<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /></td><td></td><td></td><td></td><td></td><td></td><td><button type='button' id='"+(i+1)+"'  class='btn btn-default delete_row'><i class='fa fa-minus'></i></button></td>"); -->
+      <!-- btn btn-default $('#tab_logic').append('<tr id="row'+(i+1)+'"><td><input type='text' name='b1'></td><td><input type='text' name='b2'></td>						<td><input type='text' name='b3'></td>						<td><input type='text' name='b4'></td>						<td><input type='text' name='b5'></td><td><input type='text' name='b6'></td><td><button type='button' id='"+(i+1)+"'  class='btn btn-default delete_row'><i class='fa fa-minus'></i></button></td></tr>'); -->
+	  $('#addr'+i).html("<td><input name='b1"+i+"' type='text' placeholder='b1' class='form-control input-md'  /></td><td><input name='b2"+i+"' type='text' placeholder='b2' class='form-control input-md'  /></td><td><input name='b3"+i+"' type='text' placeholder='b3' class='form-control input-md'  /></td><td><input name='b4"+i+"' type='text' placeholder='b4' class='form-control input-md'  /> </td><td><input  name='Sync1"+i+"' type='text' placeholder='Sync1'  class='form-control input-md'></td><td><input  name='Sync2"+i+"' type='text' placeholder='Sync2'  class='form-control input-md'></td><td><button type='button' id='"+i+"'  class='mtop delete_row'><i class='fa fa-minus'></i></button></td>");
+
+      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+      i++; 
+  });
+});
+  
+ $(document).on('click', '.delete_row', function() {
+	<!-- debugger; -->
+	var i=1;
+	var s=($(this).attr("id"))
+	 if(s>0){
+	 $("#addr"+s).html('');
+	 $('table#tab_logic tr#addr'+s).remove();
+	 i--; 
+	 }
+ });
+
+</script>
+<head>
+<body>
+	<div class="page-header">
+		<h4>
+			<!-- <center>Map mail to templates </center> -->
+		</h4>
+	</div>
+	<div class="container-fluid">
+		<div class="map-mail-to-temp">
+			<form action="">
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Email</label>
+					</div>
+					<div class="col-md-3">
+						<input type="email" class="form-control" id="email1" name="email1">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Templates</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="exampleTextarea"
+							name="templates">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default addButton">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-buttons">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Email</label>
+					</div>
+					<div class="col-md-3">
+						<input type="email" class="form-control" name="email">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Templates</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="exampleTextarea"
+							name="templates">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default removeButton">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-4" style="margin-top: 29px;">
+						<button type="button" class="btn btn-primary">Save</button>
+						<button type="button" id="mail-to-temp-next"
+							class="btn btn-primary">Next</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="map-sms-to-temp hidden">
+			<form action="">
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Sender</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="sender" name="sender"
+							disabled>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">MTemplate</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="" name="">
+					</div>
+					<div class="col-md-2">
+						<label for="exampleTextarea">Template Name</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="templatename1"
+							name="templatename1">
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Subject</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="" name="subject">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default addSubject">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-subject">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Subject</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="" name="subject">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default removeSubject">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Body</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="" name="body">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default addBody">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-body">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Body</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="" name="body">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default removeBody">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Attachment</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="attachment1"
+							name="attachment1">
+					</div>
+					<div class="col-md-2">
+						<label for="exampleTextarea">Attachment Name</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id=""
+							name="attachment-name">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default addAttchment">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-attachment">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Attachment</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="attachment1"
+							name="attachment1">
+					</div>
+					<div class="col-md-2">
+						<label for="exampleTextarea">Attachment Name</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="attachment-name"
+							name="attachment-name">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default removeAttachment">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">%Match</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="match" name="match">
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Alert</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="" name="alert">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">if</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" id="" name="">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">lessthan</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" id="" name="">
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Ignore</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" width="100" class="form-control"
+							name="ignore">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Using Event</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="" name="">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-4" style="margin-top: 29px;">
+						<button type="button" id="sms-to-temp-previous"
+							class="btn btn-primary">Previous</button>
+						<button type="button" class="btn btn-primary">Save</button>
+						<button type="button" id="sms-to-temp-next"
+							class="btn btn-primary">Next</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="mail-parsing-template hidden">
+			<form action="">
+				<div class="col-md-12 form-group">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Template Name</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="template2"
+							name="template2" disabled>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Parse</label>
+					</div>
+					<div class="col-md-3">
+						<select class="form-control" id="parse" name="parse">
+							<option value="word">Word</option>
+							<option value="excel" selected>Excel</option>
+						</select>
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Program</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="program">
+					</div>
+					<div class="col-md-3">
+						<button type="button" class="btn btn-default addProgram">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-program">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Parse</label>
+					</div>
+					<div class="col-md-3">
+						<select class="form-control" id="parse" name="parse">
+							<option value="word">Word</option>
+							<option value="excel" selected>Excel</option>
+						</select>
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Program</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="program">
+					</div>
+					<div class="col-md-3">
+						<button type="button" class="btn btn-default removeProgram">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Extract values for</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="extract-values">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default addExtractvalues">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-extractvalues">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Extract values for</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id=""
+							name="extract-values[]">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default removeExtractvalues">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Save Prog</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="saveProg"
+							name="saveProg">
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="object">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-4" style="margin-top: 29px;">
+						<button type="button" id="mail-parsing-previous"
+							class="btn btn-primary">Previous</button>
+						<button type="button" class="btn btn-primary">Save</button>
+						<button type="button" id="mail-parsing-next"
+							class="btn btn-primary">Next</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="attribute-term-mapping hidden">
+			<div class="col-md-12">
+				<table class="table table-bordered" id="tab_logic">
+					<thead>
+						<tr>
+							<th>B1</th>
+							<th>B2</th>
+							<th>B3</th>
+							<th>B4</th>
+							<th>Sync1</th>
+							<th>Sync2</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id='addr0'>
+							<td><input type="text" name="b1" placeholder="B1"
+								class="form-control input-md"></td>
+							<td><input type="text" name="b2" placeholder="B2"
+								class="form-control input-md"></td>
+							<td><input type="text" name="b3" placeholder="B3"
+								class="form-control input-md"></td>
+							<td><input type="text" name="b4" placeholder="B4"
+								class="form-control input-md"></td>
+							<td><input type="text" name="b5" placeholder="Sync1"
+								class="form-control input-md"></td>
+							<td><input type="text" name="b6" placeholder="Sync2"
+								class="form-control input-md"></td>
+							<td>
+								<button type="button" id="add_row" class="mtop">
+									<i class="fa fa-plus"></i>
+								</button>
+							</td>
+						</tr>
+						<tr id='addr1'></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-4" style="margin-top: 29px;">
+					<button type="button" id="attribute-previous"
+						class="btn btn-primary">Previous</button>
+					<button type="button" class="btn btn-primary">Save</button>
+					<button type="button" id="attribute-next" class="btn btn-primary">Next</button>
+
+				</div>
+			</div>
+		</div>
+		<div class="schedule-publication hidden">
+			<form action="">
+				<div class="col-md-12 form-group">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Attachment</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="attachment">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Event</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="event">
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Schedule</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="schedule">
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Object Name</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="object-name[]">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default addObjectname">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-objectname">
+					<div class="col-md-2">
+						<label for="exampleTextarea">Object Name</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" name="object-name[]">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default removeObjectname">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Send by</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" name="sendby[]">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Send by</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" name="sendby2[]">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">To</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" name="to[]">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default addSendby">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 form-group hidden" id="hidden-sendby">
+					<div class="col-md-1">
+						<label for="exampleTextarea">Send by</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" name="sendby[]">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">Send by</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" name="sendby2[]">
+					</div>
+					<div class="col-md-1">
+						<label for="exampleTextarea">To</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" name="to[]">
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default removeSendby">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-4" style="margin-top: 29px;">
+						<button type="button" id="schedule-previous"
+							class="btn btn-primary">Previous</button>
+						<button type="button" class="btn btn-primary">Save</button>
+						<button type="button" id="schedule-next" class="btn btn-primary">Next</button>
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</html>
+</body>
+

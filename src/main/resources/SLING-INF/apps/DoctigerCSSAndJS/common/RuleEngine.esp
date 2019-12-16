@@ -1,0 +1,17 @@
+ <div class="tab-pane" id="ruleEngine">
+                            	<div class="row">
+									<div class="col-sm-12">
+										<h4 class="info-text">Rule Engine</h4>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6 col-sm-offset-1">
+						  				<input type="button" class="btn btn-bg-brown" name="create_rule" value="Create Rule">
+						  			</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6 col-sm-offset-1">
+                                    	<input type='button' class='btn btn-previous btn-fill btn-bg-blue btn-edit' name='previous' value='Previous' />
+									</div>
+								</div>
+                            </div>

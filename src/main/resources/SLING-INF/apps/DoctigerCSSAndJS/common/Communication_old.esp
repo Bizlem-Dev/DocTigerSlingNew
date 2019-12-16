@@ -1,0 +1,618 @@
+<div class="tab-pane" id="communication">
+                               <p></p>
+                                <div class="row">
+	                            	<div class="col-sm-12">
+		                            	<div class="row">
+		                            		<div class="col-sm-12">
+                                    			<h4 class="info-text"> Communication</h4>
+		                            		</div>
+		                            		<form>
+		                         <input type=hidden id="comm-event-savetype" name="DynamicTemType" />
+		                            		
+		                            		</form>
+		                            		<div class="col-sm-12">
+											<ul class="nav-tabs-custom" role="tablist">
+											  	<li  id="communicationsbutab" class="active"><a href="#communicationTwo" role="tab"  id="communicationsbutab-anchor" data-toggle="tab">Communication</a></li>
+											  	<li id="recIntegrationsubtab"><a href="#recIntegration" role="tab" data-toggle="tab">Recipient Integration</a></li>
+											  	<li id="req-ressubtab"><a href="#requestResponse" role="tab" data-toggle="tab">Request and Response</a></li>
+											</ul>
+											<div class="tab-content tab-content-second">
+											  
+												<div class="tab-pane active  communicationtwoclass" id="communicationTwo">
+													<div class="row">
+														<div class="col-sm-6">
+														  <div class="form-group">
+															  <div class="row">
+																  <div class="col-sm-4">
+																	  <label>Select Event</label>
+																  </div>
+																  <div class="col-sm-8">
+																  
+																	  <select class="form-control bg-gray  selectevent-comm" id="selectEvent-communication" data-live-search="true">
+																		<!-- <option>--Select Event--</option> -->
+																		 <!-- <option value="eventnew">Create New Event</option>
+																		  <option value="event1">Event 1</option>
+																		  <option value="event2">Event 2</option>-->
+																	  </select>
+																  </div>
+															  </div> 
+														  </div> 
+													  </div>
+													</div>
+
+													<div class="row eventold">
+														<div class="col-sm-12">
+															<div class="row comunication-sectioin-main-last">
+																<div class="col-sm-10 comunication-sectioin-main-last-sub pr-0" id="eventoldmaindiv">
+																	<div class="row row-c" data-class="first">
+																		<div class="col-sm-3">
+																			<select class="form-control bg-gray  eventnew-sel-com" data-live-search="true" multiple="multiple" id="eventold-sel-com">
+																			  <option value="" selected disabled hidden>Select Communication Types</option>
+																			  <option value="mail">Mail</option>
+																			  <option value="sms">SMS</option>
+																			  <!--<option value="calling-list">Calling List</option>-->
+																		  </select>
+																		</div>
+																		<div class="col-sm-9 comunication-sectioin-last">
+																			<select class="form-control bg-gray  select-mail-tmp select-mail-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Mail Templates</option>
+																				
+																			</select>
+																			<select class="form-control bg-gray  select-sms-tmp select-sms-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select SMS Templates</option>
+																				
+																			</select>
+																			<!--<select class="form-control bg-gray selectpicker select-clist-tmp select-clist-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Calling List Templates</option>
+																				<option>Temp1</option>
+																				<option>Temp2</option>
+																			</select>-->
+																			
+																			
+																			<!--  <div class=" form-control attachtemp-comm-d"></div>-->
+																			  <select class="form-control bg-gray change-attach attach-temp-comm " data-live-search="true" style="width: 100px;">
+																				<!--  <option>Select Attachment</option>
+																				<option>Select Controller</option>
+																				<option>Select File Path</option>
+																				<option>Template1</option>
+																				<option>Template2</option>-->
+																			</select>
+																			<input type="text" class="form-control fl-c controller-textbox" name="controller" placeholder="Controller" style="width: 100px;display: none;margin-left: 6px;">
+																			<input type="text" class="form-control fl-c file-path-textbox" name="file_path" placeholder="File Path" style="width: 100px;display: none;margin-left: 6px;">
+																		</div>
+																	</div>
+																</div>	
+																<div class="col-sm-10 comunication-sectioin-main-copy-sub pr-0" style="display: none;">
+																	<div class="row row-c">
+																		<div class="col-sm-3">
+																			<select class="form-control bg-gray  eventnew-sel-com" data-live-search="true" multiple="multiple">
+																			  <option value="" selected disabled hidden>Select Communication Types</option>
+																			  <option value="mail">Mail</option>
+																			  <option value="sms">SMS</option>
+																			 <!-- <option value="calling-list">Calling List</option>-->
+																		  </select>
+																		</div>
+																		<div class="col-sm-9 comunication-sectioin-last">
+																			<select class="form-control bg-gray  select-mail-tmp select-mail-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Mail Templates</option>
+																				<option>Temp1</option>
+																				<option>Temp2</option>
+																			</select>
+																			<select class="form-control bg-gray  select-sms-tmp select-sms-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select SMS Templates</option>
+																				<option>Temp1</option>
+																				<option>Temp2</option>
+																			</select>
+																			<!--<select class="form-control bg-gray selectpicker select-clist-tmp select-clist-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Calling List Templates</option>
+																				<option>Temp1</option>
+																				<option>Temp2</option>
+																			</select>-->
+																		
+																		<!--  <div class="attachtemp-comm-d"></div>-->
+																		
+																			 <select class="form-control bg-gray change-attach attach-temp-comm " data-live-search="true" style="width: 100px;">
+																				<!-- <option>Select Attachment</option>
+																				<option>Select Controller</option>
+																				<option>Select File Path</option>
+																				<option>Template1</option>
+																				<option>Template2</option>-->
+																			</select>
+																			<input type="text" class="form-control fl-c controller-textbox" name="controller" placeholder="Controller" style="width: 100px;display: none;margin-left: 6px;">
+																			<input type="text" class="form-control fl-c file-path-textbox" name="file_path" placeholder="File Path" style="width: 100px;display: none;margin-left: 6px;">
+																		</div>
+																	</div>
+																</div>	
+																<div class="col-sm-2">
+																	<a class="btn btn-bg-brown sm0-btn-custom plus"><i class="fa fa-plus"></i></a>
+																  	<a class="btn btn-bg-brown sm0-btn-custom minus"><i class="fa fa-minus"></i></a>
+																</div>
+															</div>
+														</div>	
+														<div class="col-sm-12"><br>
+															<a class="btn btn-info sm-btn-custom"><i class="fa fa-edit"></i> Edit</a> &nbsp;
+															<a class="btn btn-danger sm-btn-custom"><i class="fa fa-trash"></i> Delete</a> &nbsp;
+															<a class="btn btn-success sm-btn-custom"><i class="fa fa-save"></i> Save</a>
+														</div>
+													</div>	
+
+													<div class="row eventnew">
+													<p id="eventnew-error"></p>
+														<div class="col-sm-6">
+															<div class="form-group">
+															  <div class="row">
+																  <div class="col-sm-4">
+																	  <label>Event Name</label>
+																  </div>
+																  
+																  <div class="col-sm-8">
+																	  <input type="text" class="form-control" placeholder="Enter Event Name" name="" id="new-event-name">
+																  </div>
+															  </div> 
+														  </div> 
+														</div>
+													
+														<div class="col-sm-12">
+															<div class="row comunication-sectioin-main-last">
+																<div class="col-sm-10 comunication-sectioin-main-last-sub pr-0" id="eventnewmaindiv">
+																	<div class="row row-c" data-class="first">
+																		<div class="col-sm-3 comunication-sectioin-Type" >
+																			<select class="form-control bg-gray  eventnew-sel-com" data-live-search="true" multiple="multiple" id="eventnew-sel-com">
+																			  <option value="" selected disabled hidden>Select Communication Types</option>
+																			  <option value="mail">Mail</option>
+																			  <option value="sms">SMS</option>
+																			  <option value="Download">Download</option>
+																			  
+																		  </select>
+																		</div>
+																		<div class="col-sm-9 comunication-sectioin-last">
+																			<select class="form-control bg-gray selectpicker select-mail-tmp select-mail-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Mail Templates</option>
+																				
+																			</select>
+																			<select class="form-control bg-gray selectpicker select-sms-tmp select-sms-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select SMS Templates</option>
+																				
+																			</select>
+																			<!--<select class="form-control bg-gray selectpicker select-clist-tmp select-clist-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Calling List Templates</option>
+																				<option>Temp1</option>
+																				<option>Temp2</option>
+																			</select>-->
+																			<!--<div class="attachtemp-comm-d"></div>-->
+																			
+																			  <select class="form-control bg-gray change-attach  attach-temp-comm selectpicker" id= "" data-live-search="true" style="width: 100px;">
+																				<option>Select Attachment</option>
+																				<!--<option>Select Controller</option>
+																				<option>Select File Path</option>
+																				<option>Template1</option>
+																				<option>Template2</option>-->
+																			</select>
+																			<input type="text" class="form-control fl-c controller-textbox" name="controller" placeholder="Controller" style="width: 100px;display: none;margin-left: 6px;">
+																			<input type="text" class="form-control fl-c file-path-textbox" name="file_path" placeholder="File Path" style="width: 100px;display: none;margin-left: 6px;">
+																		</div>
+																	</div>
+																</div>	
+																<div class="col-sm-10 comunication-sectioin-main-copy-sub pr-0" style="display: none;">
+																	<div class="row row-c">
+																		<div class="col-sm-3">
+																			<select class="form-control bg-gray selectpicker eventnew-sel-com" data-live-search="true" multiple="multiple">
+																			  <option value="" selected disabled hidden>Select Communication Types</option>
+																			  <option value="mail">Mail</option>
+																			  <option value="sms">SMS</option>
+																			  <!--<option value="calling-list">Calling List</option>-->
+																		  </select>
+																		</div>
+																		<div class="col-sm-9 comunication-sectioin-last">
+																			<select class="form-control bg-gray selectpicker select-mail-tmp select-mail-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Mail Templates</option>
+																				
+																			</select>
+																			<select class="form-control bg-gray selectpicker select-sms-tmp select-sms-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select SMS Templates</option>
+																				
+																			</select>
+																			<!--<select class="form-control bg-gray selectpicker select-clist-tmp select-clist-tmp-d" data-live-search="true" style="width: 105px;">
+																				<option>Select Calling List Templates</option>
+																				<option>Temp1</option>
+																				<option>Temp2</option>
+																			</select>->
+																			<!--<div class="attachtemp-comm-d"></div>-->
+																			
+																			 <select class="form-control bg-gray change-attach  attach-temp-comm selectpicker" data-live-search="true" style="width: 100px;">
+																				<!--<option>Select Attachment</option>
+																				<option>Select Controller</option>
+																				<option>Select File Path</option>
+																				<option>Template1</option>
+																				<option>Template2</option>-->
+																			</select>
+																			<input type="text" class="form-control fl-c controller-textbox" name="controller" placeholder="Controller" style="width: 100px;display: none;margin-left: 6px;">
+																			<input type="text" class="form-control fl-c file-path-textbox" name="file_path" placeholder="File Path" style="width: 100px;display: none;margin-left: 6px;">
+																		</div>
+																	</div>
+																</div>	
+																<div class="col-sm-2">
+																	<a class="btn btn-bg-brown sm0-btn-custom plus"><i class="fa fa-plus"></i></a>
+																  <a class="btn btn-bg-brown sm0-btn-custom minus"><i class="fa fa-minus"></i></a>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12"><br>
+														  <input type='button' class='btn btn-previous btn-fill btn-bg-blue btn-edit' name='previous' value='Previous' />
+															<input type="button" class="btn btn-bg-blue btn-edit savenewevent-comm" name="save" value="Save">
+														  <input type='button' class='btn btn-next btn-fill btn-bg-blue btn-edit' name='next' value='Next' />
+														</div>
+													</div>	
+												</div>
+												  
+												  <div class="tab-pane" id="recIntegration">
+													<div class="row"> 
+													  <div class="col-sm-12 addMore">
+														  <div class="row addMore-main">
+															  <div class="col-sm-12 addMore-sub">
+																	  <div class="col-sm-12 schedule_push_hideShow">
+																			  <div class="row">
+																				  <div class="col-sm-6">
+																					  <div class="form-group">
+																						<div class="row">
+																							<div class="col-sm-4">
+																								<label>Date</label>
+																							</div>
+																							<div class="col-sm-8">
+																								<input type="text" class="datepicker form-control" placeholder="Enter Date" name="">
+																							</div>
+																						</div> 
+																					</div> 
+																				  </div>
+																				  <div class="col-sm-6">
+																					  <div class="form-group">
+																						<div class="row">
+																							<div class="col-sm-4">
+																								<label>Repeat</label>
+																							</div>
+																							<div class="col-sm-8">
+																								<select class="form-control bg-gray selectpicker" data-live-search="true">
+																									<option>Every hours</option>
+																									<option>Every day</option>
+																									<option>Every week</option>
+																									<option>Every month</option>
+																								</select>
+																							</div>
+																						</div> 
+																					</div> 
+																				  </div>
+																			  </div>
+																		  </div>
+																  <div class="row">
+																	  <div class="col-sm-9 col-sm-offset-3 mb-15">
+																	  </div> 
+																	  <div class="col-sm-11">
+																		  <div class="form-group">
+																			  <div class="row">
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="URL">
+																				  </div>
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="Token">
+																				  </div>
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="Username">
+																				  </div>
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="Password">
+																				  </div>  
+																			  </div> 
+																		  </div> 
+																	  </div> 
+
+																	  <div class="col-sm-1">
+																		  <a class="btn btn-bg-brown add-more-btn sm-btn-custom"><i class="fa fa-plus"></i></a>
+																	  </div> 
+
+																		  <div class="col-sm-6">
+																			<div class="form-group">
+																				<div class="row">
+																					<div class="col-sm-4">
+																						<label>Select Event</label>
+																					</div>
+																					<div class="col-sm-8" id ="rec-int-sub-event">
+																						<!--  <select class="form-control bg-gray selectpicker" id="selectEvent-communication1" data-live-search="true">
+																							<option>--Select Event--</option>
+																							<option value="event">Event</option>
+																							<option value="event1">Event 1</option>
+																							<option value="event2">Event 2</option>
+																						</select>-->
+																					</div>
+																				</div> 
+																			</div> 
+																		</div>
+
+																  </div>
+															  </div>
+														  </div>
+														  <div class="row addMore-copy" style="display: none;">
+															  <div class="col-sm-12 addMore-sub">				  
+																  <div class="row">
+																	  <div class="col-sm-9 col-sm-offset-3 mb-15">
+																	  </div> 
+																	  <div class="col-sm-11">
+																		  <div class="form-group">
+																			  <div class="row">
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="URL">
+																				  </div>
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="Token">
+																				  </div>
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="Username">
+																				  </div>
+																				  <div class="col-sm-3">
+																					  <input type="text" class="form-control" placeholder="Password">
+																				  </div>  
+																			  </div> 
+																		  </div> 
+																	  </div> 
+
+																	  <div class="col-sm-1">
+																		  <a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+																	  </div> 
+
+																  </div>
+															  </div>
+														  </div>
+													  </div>
+												  </div> 
+												  <div class="row"> 
+													  <div class="col-sm-12">
+															<input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+														</div>
+													</div>
+												</div>
+												  
+												  <!-- Request and Response Start -->
+												  <div class="tab-pane" id="requestResponse">
+												  <p id="req-res-error1" > </p>
+												  
+													<div class="row"> 
+													
+													
+													  <div class="col-sm-12 addMore">
+														  <div class="row addMore-main">
+															  <div class="col-sm-12 addMore-sub">
+
+																<div class="row">
+																		<div class="col-sm-6">
+																			<div class="form-group">
+																				<div class="row">
+																					<div class="col-sm-4">
+																						<label>Select Event</label>
+																					</div>
+																					<div class="col-sm-8" id ="req-res-int-sub-event1">
+																						<!-- <select class="form-control bg-gray selectpicker" id="selectEvent-communication2" data-live-search="true">
+																							 <option>--Select Event--</option>
+																							<option value="event">Event</option>
+																							<option value="event1">Event 1</option>
+																							<option value="event2">Event 2</option>
+																						</select>-->
+																					</div>
+																				</div> 
+																			</div> 
+																		</div>
+																	</div>
+					
+
+																  <div class="row">
+
+																	  <div class="col-sm-10">
+																		  <div class="form-group m-0">
+																			  <div class="row">
+																				  <div class="col-sm-6">
+																					  <div class="row">
+																						  <div class="col-sm-12">
+																							  <label>Input:</label>
+																						  </div>
+																					  </div>	
+																				  </div>
+																			  </div>
+																		  </div> 
+																	  </div> 
+
+																  </div>
+																  
+																  <div class="row">
+
+																	  <div class="col-sm-6">
+																		  <div class="form-group m-0">
+																			<div class="row">
+																				<div class="col-sm-4">
+																					<label>Primary Key:</label>
+																				</div>
+																				<div class="col-sm-8">
+																						<input type="text"  id="event-pk-id1"  class="form-control" disabled>
+																					<input type="hidden"  id="event-pk-sfobj-id1"  class="form-control" disabled>
+																						
+																				</div>
+																			</div>	
+																		  </div> 
+																	  </div> 
+
+																  </div>
+
+																  <div class="row">
+
+																	  <div class="col-sm-10">
+																		  <div class="form-group m-0">
+																			  <div class="row">
+																				  <div class="col-sm-6">
+																					  <div class="row">
+																						  <div class="col-sm-12">
+																							  <label style="margin-top: 30px;">Output:</label>
+																						  </div>
+																					  </div>	
+																				  </div>
+																			  </div>
+																		  </div> 
+																	  </div> 
+
+																  </div>
+																  
+																  <div class="row">
+
+																	  <div class="col-sm-6">
+																		  <div class="form-group m-0">
+																			<div class="row">
+																				<div class="col-sm-4">
+																					<label>Field Name:</label>
+																				</div>
+																				<div class="col-sm-8">
+																						<input type="text" id ="event1-outputfield"  class="form-control">
+																				</div>
+																			</div>	
+																		  </div> 
+																	  </div> 
+
+																  </div>
+															  </div>
+														  </div>
+													
+													  </div>
+												  </div> 
+												  <div class="row"> 
+													  <div class="col-sm-12">
+															<input type="button" class="btn btn-bg-blue btn-edit"  id ="req-res-int-event1-save" name="save" value="Save">
+														</div>
+													</div>
+													
+												<!-- ========================================================== -->
+												
+												
+												<div class="row"> 
+													  <div class="col-sm-12 addMore">
+														  <div class="row addMore-main">
+															  <div class="col-sm-12 addMore-sub">
+
+																<div class="row">
+																		<div class="col-sm-6">
+																			<div class="form-group">
+																				<div class="row">
+																					<div class="col-sm-4">
+																						<label>Select Event</label>
+																					</div>
+																					<div class="col-sm-8" id ="req-res-int-sub-event2">
+																						<!--  <select class="form-control bg-gray selectpicker" id="selectEvent-communication2Demo" data-live-search="true">
+																							<option>--Select Event--</option>
+																							<option value="event">Event</option>
+																							<option value="event1">Event 1</option>
+																							<option value="event2">Event 2</option>
+																						</select>-->
+																					</div>
+																				</div> 
+																			</div> 
+																		</div>
+																	</div>
+					
+
+																  <div class="row">
+
+																	  <div class="col-sm-10">
+																		  <div class="form-group m-0">
+																			  <div class="row">
+																				  <div class="col-sm-6">
+																					  <div class="row">
+																						  <div class="col-sm-12">
+																							  <label></label>
+																						  </div>
+																					  </div>	
+																				  </div>
+																			  </div>
+																		  </div> 
+																	  </div> 
+
+																  </div>
+																  
+																  <div class="row">
+
+																	  <div class="col-sm-6">
+																		  <div class="form-group m-0">
+																			<div class="row">
+																				<div class="col-sm-4">
+																					<label>Primary Key:</label>
+																				</div>
+																				<div class="col-sm-8">
+																						<input type="text" class="form-control" id="event-pk-id2" disabled>
+																				<input type="hidden"  id="event-pk-sfobj-id2"  class="form-control" disabled>
+																				
+																				</div>
+																			</div>	
+																		  </div> 
+																	  </div> 
+
+																  </div>
+
+																  <div class="row">
+
+																	  <div class="col-sm-10">
+																		  <div class="form-group m-0">
+																			  <div class="row">
+																				  <div class="col-sm-6">
+																					  <div class="row">
+																						  <div class="col-sm-12">
+																							  <label style="margin-top: 30px;">Primary key:</label>
+																						  </div>
+																					  </div>	
+																				  </div>
+																			  </div>
+																		  </div> 
+																	  </div> 
+
+																  </div>
+																  
+																  <div class="row">
+
+																	  <div class="col-sm-6">
+																		  <div class="form-group m-0">
+																			<div class="row">
+																				<div class="col-sm-4">
+																					<label>value:</label>
+																				</div>
+																				<div class="col-sm-8">
+																						<input type="text"  id ="event2-pkvalue"class="form-control" >
+																						
+																				</div>
+																			</div>	
+																		  </div> 
+																	  </div> 
+
+																  </div>
+															  </div>
+														  </div>
+													
+													  </div>
+												  </div> 
+												  <div class="row"> 
+													  <div class="col-sm-12">
+															<input type="button" class="btn btn-bg-blue btn-edit" id ="req-res-DocGen-event2-save"  name="Generate Document" value="Generate Document">
+														</div>
+													</div>
+												
+												
+												
+												
+												
+												
+												
+												<!-- ====================================================================-->												
+												</div>
+												  <!-- Request and Response End -->
+
+											</div>
+										</div> 
+		                            	</div>
+		                            </div>
+		                        </div> 
+                            
+								
+								
+								
+                            </div>

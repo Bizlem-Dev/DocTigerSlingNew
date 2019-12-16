@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Admin & Workflow | Manage Master Roles</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/Approval/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/Approval/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/Approval/css/custom.css">
+	<style>
+	
+a:link {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+
+	table {
+  table-layout: fiexd;
+}
+	td div{
+  width:100px;
+  height:auto;
+  overflow:hidden;
+  word-wrap:break-word; 
+}
+.t{
+	width:200px;
+	height:auto
+}
+</style>
+</head>
+<body>
+<%=request.getRemoteUser()%>
+<form>
+<input type=hidden id="email" name="email" value="<%=request.getRemoteUser()%>"/>                  
+</form>
+	<div class="container content-section">
+        <div class="row">
+	        <div class="col-sm-12">
+	        	<h2 class="text-center">Approver</h2>
+	        </div>
+	    </div>    
+        <div class="row main-table">
+	        <div class="col-sm-12 copy-table">
+		        <table class="table table-bordered" id="pendingtasktableid">
+		        	<thead>
+		        		<tr>
+		        			<th>Name</th>
+		        			<th>Type</th>
+		        			<th>Description</th>
+		        			<th>Attachment <a href="table2.html"> <span style="float:right;" > view</span></a></th>
+		        		</tr>
+		        	</thead>
+		        	<tbody>
+		        		<tr>
+		        			<td style="width:20%;">
+		        				
+		        			</td>
+		        			<td style="width:20%;"></td>
+		        			<td></td>
+		        			<td></td>
+		        			<td style="border-color:#fff;"><a href="#"><i class="fa fa-check approver-icon" aria-hidden="true" style="color:green;"></i></a><a href="#"><i class="fa fa-times approver-icon" aria-hidden="true" style="color:red;"></i></a></td>
+		        		</tr>
+		        		
+		        	</tbody>
+		        </table>
+	        </div>
+	         <div class="col-md-12">
+	        	<div class="row">
+	        		<div class="col-md-4 approver-cooment">
+	        			<label>Comment</label><br>
+	        			<textarea type="txet" name="approver" placeholder="Comment" class="form-control"></textarea>
+	        		</div>
+	        	</div>
+	        </div>
+	        <div class="col-sm-12 text-center">
+	        	<button class="btn btn-success btn-big">Save</button>
+	        </div>
+	    </div>
+		<div class="" id="table2" style="display:none">
+		     <table class="table table-bordered">
+		        	<thead>
+		        		<tr>
+		        			<th>Parent Clause</th>
+		        			<th>Child Clause</th>
+		        			<th>Description </th>
+		        			<th>Old Version Description</th>
+		        		</tr>
+		        	</thead>
+		        	<tbody>
+		        		<tr>
+		        			<td style="width:20%;">
+		        				<label></label>
+		        			</td>
+		        			<td style="width:20%;">
+		        				<label></label>
+		        			</td>
+		        			<td></td>
+		        			<td></td>
+		        		
+		        		</tr>
+		        		<tr>
+		        			<td style="width:20%;">
+		        				<label></label>
+		        			</td>
+		        			<td style="width:20%;">
+		        				<label></label>
+		        			</td>
+		        			<td></td>
+		        			<td></td>
+		        			
+		        		</tr>
+		        	</tbody>
+		       </table>
+		</div>
+		
+		
+		
+		
+		<div class="" id="clausecompare"  style="display: none;">
+		     <table class="table table-bordered">
+		        	<thead>
+		        		<tr>
+		        			<th>Parent Clause</th>
+		        			<th>Child Clause</th>
+		        			<th>Description </th>
+		        			<th>Old Version Description</th>
+		        		</tr>
+		        	</thead>
+		        	<tbody>
+		        		<tr>
+		        			<td style="width:20%;">
+		        				<div class="t">
+									aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+								</div>
+		        			</td>
+		        			<td style="width:20%;">
+		        				<div class="t">
+									aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+								</div>
+		        			</td>
+		        			<td>
+								<div class="t">
+									aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+								</div>
+							</td>
+		        			<td>
+								<div class="t">
+									
+								</div>
+							</td>
+		        		
+		        		</tr>
+		        		<tr>
+		        			<td style="width:20%;">
+		        				<label>
+								<div class="t">
+									sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+								</div>
+								</label>
+		        			</td>
+		        			<td style="width:20%;">
+		        				<label>
+								<div class="t">
+								
+								</div>
+								</label>
+		        			</td>
+		        			<td>
+								<div class="t">
+								
+								</div>
+							</td>
+		        			<td>
+								<div class="t">
+								dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+								</div>
+							</td>
+		        			
+		        		</tr>
+		        	</tbody>
+		       </table>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+	</div>
+	
+	 <script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/jquery.bootstrap.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/material-bootstrap-wizard.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/jquery-ui-1.12.1.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/bootstrap-select.min.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/bootstrap-select.min.js" type="text/javascript"></script>
+	<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+		<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/js/approval.js" type="text/javascript"></script>
+	
+<!-- <script> -->
+<!-- function myFunction() { -->
+    <!-- var x = document.getElementById("table2"); -->
+    <!-- if (x.style.display === "none") { -->
+        <!-- x.style.display = "block"; -->
+    <!-- } else { -->
+        <!-- x.style.display = "none"; -->
+    <!-- } -->
+<!-- } -->
+<!-- </script>	 -->
+</body>
+</html>

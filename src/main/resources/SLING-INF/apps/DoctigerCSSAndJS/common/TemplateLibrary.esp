@@ -1,0 +1,519 @@
+<form name="formName">
+	<input type=hidden id="tempN" name="tempN" value=""/>
+	<input type=hidden id="clsarr" name="clsarr" value=""/>
+	<input type=hidden id="lstArr" name="lstArr" value=""/>
+	<input type=hidden id="liArr" name="liArr" value="[]"/>
+	<input type=hidden id="wfdoc_sel" name="wfdoc_sel" value=""/>
+	<textarea id="base64docx" style="width:640;height:240;display:none;"></textarea>
+	<input type=hidden id="upfile" name="upfile" value=""/>
+	<input type=hidden id="tempSaveType" name="tempSaveType" value="new"/>
+	<!-- <img src="" alt="Smiley face" height="42" width="42" id="imageid"> -->
+</form>
+
+<div class="tab-pane" id="templateLibrary">
+    <div class="row">
+	    <div class="col-sm-10 col-sm-offset-1">
+		    <div class="row">
+		        <div class="col-sm-12">
+                    <h4 class="info-text"> Template Library</h4>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="col-sm-8">
+					<button class="btn btn-bg-brown create-new-template-btn">Create New Template</button>
+		        </div>
+		    </div>                        	
+		    <div class="row table-clause-template-main">
+		                            		<div class="col-sm-12">
+		                            			<table class="table table-bordered table-clause-template" id="templates">
+		                            				<thead>
+		                            					<tr>
+		                            						<th>Template Name</th>
+		                            						<th>Download Format</th>
+		                            						<th>Created By</th>
+		                            						<th>Approved By</th>
+		                            						<th>Date</th>
+		                            						<th>Version</th>
+		                            						<th style="width: 190px;">Action</th>
+		                            					</tr>
+		                            				</thead>
+		                            				<tbody>
+		                            					
+		                            				</tbody>
+		                            			</table>
+		                            		</div>
+		                            	</div>                        	
+		                            	<div class="row createNewTempMain" style="display: none;">
+		                            		<form method="" action="">
+			                            		<div class="col-sm-8">
+			                        				<div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">
+				                                					<div class="col-sm-3">
+															    		<label>Template Name</label>
+						                                			</div>
+						                                			<div class="col-sm-6">
+							                                			<input type="text" class="form-control" name="template_name" placeholder="Template Name" id="tempName" >
+						                                			</div>	
+				                                				</div>
+				                                			</div>
+				                                		</div>
+					                                </div>    			
+					                                <div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">
+				                                					<div class="col-sm-3">
+															    		<label>Meta Data</label>
+						                                			</div>
+						                                			<div class="col-sm-6">
+							                                			<input type="text" class="form-control" name="meta_data" placeholder="Meta Data" id="tempMD" value="">
+						                                			</div>	
+				                                				</div>
+				                                			</div>
+				                                		</div>
+					                                </div>
+					                                <div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">
+				                                					<div class="col-sm-3">
+															    		<label>Description</label>
+						                                			</div>
+						                                			<div class="col-sm-6">
+							                                			<input type="text" class="form-control" name="description" placeholder="Description" id="tempDes" value="">
+						                                			</div>	
+				                                				</div>
+				                                			</div>
+				                                		</div>
+					                                </div>
+					                                <div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">	
+						                                			<div class="col-sm-4">
+						                                				<div class="check-external-parameter-temp">
+																		    <input id="check-external-parameter-temp" type="checkbox" name="check-external-parameter-temp">
+																		    <label for="check-external-parameter-temp">
+																		      <div class="checkbox"><i class="fa fa-check"></i></div>
+																		      <span>External Parameter</span>
+																		    </label>
+																	  	</div>
+						                                			</div>
+				                                				</div>
+				                                			</div>
+				                                		</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-12">
+		                                					<input type="button" class="btn btn-bg-blue btn-edit temp-lib-create-new-previous-btn" name="previous" value="Previous">
+												  			<input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+												  			<input type="button" class="btn btn-bg-blue template-library-save-next" name="save" value="Save & Next">
+														</div>
+													</div>
+			                            		</div>
+		                            		</form>
+		                            	</div>
+		                            	<div class="row select-sfdc-object-main-template" style="display: none;">
+		                            		<div class="row">
+		                            			<div class="col-sm-10">
+		                            				<h5>Select SFDC Objects</h5>
+		                            			</div>
+		                            		</div>
+		                            		<div class="col-sm-8">
+												<div class="form-group addMore m-0">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>SF Objects</label>
+					                                			</div>
+					                                			<div class="col-sm-6">
+					                                				<select class="form-control sf-object-temp-lib bg-gray selectpicker" data-live-search="true">
+					                                					<option>--Select SF Objects--</option>
+					                                					<option value="Account">Account</option>
+					                                					<option class="Case">Case</option>
+					                                					<option class="Lead">Lead</option>
+					                                					<option class="Oppurtunity">Oppurtunity</option>
+					                                				</select>
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+												</div>  
+		                                	</div> 
+		                                	<div class="col-sm-12 box-main-section">
+		                                		<div class="row">
+		                                			<div class="col-sm-3 p-0">
+		                                				<div class="box box-left-temp-lib">
+		                                					<h2 class="box-title">Select SF Fields</h2>
+													  	</div>
+		                                			</div>
+		                                			<div class="col-sm-1 text-center">
+		                                				<div class="box-center">
+													    	<a class="btn click-right-temp-lib sm-btn-custom"><i class="fa fa-long-arrow-right"></i></a>
+													    	<a class="btn click-left-temp-lib sm-btn-custom"><i class="fa fa-long-arrow-left"></i></a>
+													  	</div>
+		                                			</div>
+		                                			<div class="col-sm-3 p-0">
+		                                				<div class="box box-right-temp-lib"> 
+		                                					<h2 class="box-title">Selected SF Fields</h2>
+											  			</div>
+		                                			</div>
+		                                			<div class="col-sm-1 text-center">
+		                                				<div class="box-center">
+													    	<a class="btn click-right-primary-temp-lib sm-btn-custom"><i class="fa fa-long-arrow-right"></i></a>
+													    	<a class="btn click-left-primary-temp-lib sm-btn-custom"><i class="fa fa-long-arrow-left"></i></a>
+													  	</div>
+		                                			</div>
+		                                			<div class="col-sm-3 p-0">
+		                                				<div class="box box-primary-temp-lib"> 
+		                                					<h2 class="box-title">Select Primary Key</h2>
+											  			</div>
+		                                			</div>
+		                                		</div>
+		                                	</div>
+		                                	<div class="col-sm-10">
+		                                		<input type="button" class="btn btn-bg-blue btn-edit mail-template-sfdc-previous-btn" name="previous" value="Previous">
+									  			<input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+									  			<input type="button" class="btn btn-bg-blue mail-template-sfdc-save-next" name="save" value="Save & Next">
+		                                	</div>
+		                            	</div>
+		                            	<div class="row external-parameter-main-template" style="display: none;">
+		                            		<div class="row">
+		                            			<div class="col-sm-10">
+		                            				<h5>External Parameter Selected</h5>
+		                            			</div>
+		                            		</div>
+		                            		<div class="col-sm-9">
+		                            			<div class="row">
+		                            				<div class="col-sm-3">
+				                                		<input type="text" class="form-control primary-key-ext-para-temp-lib" value="primary key" placeholder="Primary Key" disabled="disabled">
+				                                	</div>
+		                            			</div>
+		                            		</div>
+		                            		<div class="col-sm-3 text-right">
+                                				<a class="btn btn-bg-orange-new sm-btn-custom web-services-add-temp-lib">Web Services</a>
+                                				<a class="btn btn-bg-brown sm-btn-custom web-services-add-temp-lib"><i class="fa fa-plus"></i></a>
+                                			</div>
+		                            		<div class="col-sm-11 add-url-name-main-temp-lib"></div>
+		                            		<div class="col-sm-12">
+		                            			<div class="row">
+				                            		<div class="col-sm-11 web-services-temp-lib" style="display: none;">
+				                            			<div class="row">
+				                            				<div class="col-sm-12">
+																<div class="form-group addMore m-0">
+							                                		<div class="row addMore-main">
+							                                			<div class="col-sm-12 addMore-sub">	
+							                                				<div class="row">
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="URL" name="url" value="" id="web-services-url-temp-lib">
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Token" id="temp_token">
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Username" id="temp_user">
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<input type="password" class="form-control" placeholder="Password" id="temp_pass">
+									                                			</div>  	
+							                                				</div>
+							                                			</div>
+							                                		</div>
+																</div> 
+						                                	</div>
+
+						                                	<div class="col-sm-12">
+																<div class="form-group addMore m-0">
+							                                		<div class="row addMore-main">
+							                                			<div class="col-sm-12 addMore-sub tempipfld" id="temp_ip">
+							                                				<div class="row">
+							                                					<div class="col-sm-12">
+																		    		<label>Input Fields :</label>
+									                                			</div>
+									                                		</div>	
+							                                				<div class="row">
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Name" id="ip_tempFN">
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="ip_tempFT">
+									                                					<option value="">Field Type</option>
+									                                					<option value="1">Field Type 1</option>
+									                                					<option value="2">Field Type 2</option>
+									                                					<option value="3">Field Type 3</option>
+									                                				</select>
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Length" id="ip_tempFL">
+									                                			</div>
+									                                			<div class="col-sm-3 p-0">
+									                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addtempip"><i class="fa fa-plus"></i></a>
+									                                			</div>	
+							                                				</div>
+							                                			</div>
+							                                		</div>
+							                                		<div class="row addMore-copy" style="display: none;">
+							                                			<div class="col-sm-12 addMore-sub">
+							                                				<div class="row">
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Name" id="ip_tempFNCopy">
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="ip_tempFTCopy">
+									                                					<option value="">Field Type</option>
+									                                					<option value="1">Field Type 1</option>
+									                                					<option value="2">Field Type 2</option>
+									                                					<option value="3">Field Type 3</option>
+									                                				</select>
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Length" id="ip_tempFLCopy">
+									                                			</div>
+									                                			<div class="col-sm-3 p-0">
+									                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+									                                			</div>
+							                                				</div>
+							                                			</div>
+							                                		</div>
+																</div> 
+						                                	</div> 
+
+						                                	<div class="col-sm-12">
+																<div class="form-group addMore">
+							                                		<div class="row addMore-main">
+							                                			<div class="col-sm-12 addMore-sub tempopfld" id="temp_op">
+							                                				<div class="row">
+							                                					<div class="col-sm-12">
+																		    		<label>Output Fields :</label>
+									                                			</div>
+									                                		</div>	
+							                                				<div class="row">
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Name" id="op_tempFN">
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="op_tempFT">
+									                                					<option value="">Field Type</option>
+									                                					<option value="1">Field Type 1</option>
+									                                					<option value="2">Field Type 2</option>
+									                                					<option value="3">Field Type 3</option>
+									                                				</select>
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Length" id="op_tempFL">
+									                                			</div>
+									                                			<div class="col-sm-3 p-0">
+									                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addtempop"><i class="fa fa-plus"></i></a>
+									                                			</div>	
+							                                				</div>
+							                                			</div>
+							                                		</div>
+							                                		<div class="row addMore-copy" style="display: none;">
+							                                			<div class="col-sm-12 addMore-sub">
+							                                				<div class="row">
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Name" id="op_tempFNCopy">
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="op_tempFTCopy">
+									                                					<option value="">Field Type</option>
+									                                					<option value="1">Field Type 1</option>
+									                                					<option value="2">Field Type 2</option>
+									                                					<option value="3">Field Type 3</option>
+									                                				</select>
+									                                			</div>
+									                                			<div class="col-sm-3">
+									                                				<input type="text" class="form-control" placeholder="Field Length" id="op_tempFLCopy">
+									                                			</div>
+									                                			<div class="col-sm-3 p-0">
+									                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+									                                			</div>
+							                                				</div>
+							                                			</div>
+							                                		</div>
+																</div> 
+						                                	</div> 
+				                            			</div>
+				                            		</div>
+				                            		<div class="col-sm-11">
+				                            			<div class="row">
+				                            				<div class="col-sm-6">
+																<div class="form-group addMore">
+							                                		<div class="row addMore-main">
+							                                			<div class="col-sm-12 addMore-sub">	
+							                                				<div class="row">
+									                                			<div class="col-sm-4">
+									                                				<input type="file" name="file[]" class="test-xls" id="upload-xls-temp-lib" style="display: none;">
+									                                				<label class="btn btn-bg-orange sm-btn-custom" for="upload-xls-temp-lib" title="Upload XLS"><i class="fa fa-upload"></i> </label>  <br> 
+									                                				<small class="test-xls-filename color-dark" id="upload-xls-filename-temp-lib">File Name</small> 
+									                                			</div>
+									                                			<div class="col-sm-3 p-0">
+									                                				<a class="btn btn-bg-brown add-more-btn-b-file sm-btn-custom"><i class="fa fa-plus"></i></a>
+									                                			</div>	
+							                                				</div>
+							                                			</div>
+							                                		</div>
+							                                		<div class="row addMore-copy" style="display: none;">
+							                                			<div class="col-sm-12 addMore-sub">
+							                                				<div class="row">
+									                                			<div class="col-sm-4">
+									                                				<input type="file" name="file[]" class="test-xls" id="upload-xls**1**" style="display: none;">
+										                                			<label class="btn btn-bg-orange sm-btn-custom" for="upload-xls**1**" title="Upload XLS"><i class="fa fa-upload"></i></label>  <br> 
+										                                			<small class="test-xls-filename color-dark" id="upload-xls-filename">File Name</small> 
+									                                			</div>
+									                                			<div class="col-sm-3 p-0">
+									                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+									                                			</div>
+							                                				</div>
+							                                			</div>
+							                                		</div>
+																</div> 
+						                                	</div>  
+				                            			</div>
+				                            		</div>	
+		                            			</div> 
+			                            	</div>
+			                            	<div class="col-sm-12">
+			                            		<input type="button" class="btn btn-bg-blue btn-edit temp-external-para-pre-btn" name="previous" value="Previous">
+									  			<input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+									  			<input type="button" class="btn btn-bg-blue temp-external-para-save-next" name="save" value="Save & Next">
+			                            	</div>
+		                            	</div>
+		                            	<div class="row compose-clause-main-template" style="display: none;">
+		                            		<div class="row">
+		                            			<div class="col-sm-10">
+		                            				<h5>Compose clause</h5>
+		                            			</div>
+		                            		</div>
+		                            		<div class="col-sm-12 addMore-b">
+		                            			<div class="row">
+			                            			<div class="col-sm-10 box-main-section" style="margin-bottom: 25px;">
+				                                		<div class="row">
+				                                			<div class="col-sm-5">
+				                                				<div class="box box-left-compose-temp-lib" id="clsList">
+				                                					<h2 class="box-title">Select Compose Clauses</h2>
+															  	</div>
+				                                			</div>
+				                                			<div class="col-sm-2 text-center">
+				                                				<div class="box-center">
+															    	<a class="btn click-left-compose-temp-lib sm-btn-custom"><i class="fa fa-long-arrow-left"></i></a>
+															    	<a class="btn click-right-compose-temp-lib sm-btn-custom"><i class="fa fa-long-arrow-right"></i></a>
+															  	</div>
+				                                			</div>
+				                                			<div class="col-sm-5">
+				                                				<div class="box box-right-compose-temp-lib" id="sel_clsList"> 
+				                                					<h2 class="box-title">Selected Compose Clauses</h2>
+													  			</div>
+				                                			</div>
+				                                		</div>
+			                                		</div>
+		                                		</div> 
+		                                		<div class="row">
+		                                			<div class="col-sm-2">
+		                                			<!--	<button class="btn btn-bg-orange down-para-btn sm-btn-custom"><i class="fa fa-download"></i></button> -->
+		                                			<a class="btn btn-bg-orange down-para-btn sm-btn-custom downloadtemplate"
+									id="downldtemplink"> Download 
+										<i class="fa fa-download"></i>
+									</a> 
+		                                			</div>	
+		                                			<div class="col-sm-5 col-sm-offset-1">
+		                                				<div class="form-group">
+		                                					<textarea class="form-control temp-lib-down-para" rows="3">FName LName Age....</textarea>
+														</div>
+		                                			</div>
+	                            				</div>
+	                            				<div class="row">
+		                                			<div class="col-sm-12" style="margin-bottom: 10px;">
+		                                				<input type="file" name="" id="file-upload" style="display: none;">
+				                                		<label class="btn btn-bg-orange sm-btn-custom" for="file-upload" title="Upload Document"><i class="fa fa-upload"></i></label> <br>
+				                                		<small id="file-upload-filename" class="color-dark">File Name</small> 
+		                                			</div>
+	                            				</div>
+	                            				<div class="row">
+	                            					<div class="col-sm-3">
+														<label>Select Numbering Type</label>
+	                            					</div>
+													<div class="col-sm-4">
+                            							<select class="form-control bg-gray" id="numStyle">
+		                                					<option>--Select Numbering Type--</option>
+                                                    		<option value="1.1">1,1.1,a,i</option>
+		                                					<option value="1.1">1, 2, 3, 4</option>
+		                                					<option value="1.1">I, II, III, IV</option>
+		                                					<option value="1.1">i, ii, iii, iv</option>
+		                                					<option value="1.1">A, B, C, D</option>
+		                                					<option value="1.1">a, b, c, d</option>
+		                                				</select>
+													</div>
+												</div>
+												
+	                            				<div class="form-group m-0">
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+					                                			<div class="col-sm-12">
+					                                			 <input class="btn btn-next btn-fill btn-bg-blue btn-QRcode" name="QR Code" type="button" value="QR Code" id="qrCode">
+                                        						<input class="btn btn-next btn-fill btn-bg-blue btn-Logo" name="Logo" onclick="redirectToLogo();" type="button" value="Logo">
+                                       
+					                                				<div class="check-advanced-compose-temp-lib">
+																	    <input id="checkAdvancedComposeTempLib" type="checkbox" name="advanced-dynamic-doc" class="check-advanced-compose-temp-lib" />
+																	    <label for="checkAdvancedComposeTempLib">
+																	      <div class="checkbox"><i class="fa fa-check"></i></div>
+																	      <span>Advanced</span>
+																	    </label>
+																  	</div>
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+												</div>
+	                            				<div class="row select-rule-compose-main-temp-lib" style="display: none;">
+	    											<div class="col-sm-12 addMore-sub">
+		                                				<div class="row">
+				                                			<div class="col-sm-3">
+															    <label>Select Rule</label>
+														  	</div>
+				                                			<div class="col-sm-4" id="Sel_RuleTemp">
+																		                                				
+				                                			</div>	
+				                                		</div>
+		                                			</div>
+	                            				</div>
+	                            				<div class="row select-workflow-compose-main-temp" style="display: none;">
+	    											<div class="col-sm-12 addMore-sub">
+		                                				<div class="row">
+				                                			<div class="col-sm-3">
+															    <label>Select Workflow</label>
+														  	</div>
+				                                			<div class="col-sm-4" id="Sel_WFTemp">
+																	                                				
+				                                			</div>	
+				                                		</div>
+		                                			</div>
+	                            				</div>
+	                            				<div class="row select-workflow-compose-main-temp" style="display: none;">
+	    											<div class="col-sm-12 addMore-sub">
+		                                				<div class="row">
+				                                			<div class="col-sm-3">
+															    <label>Select Workflow For Document</label>
+														  	</div>
+				                                			<div class="col-sm-4" id="Sel_WFDocTemp">
+																                                				
+				                                			</div>	
+				                                		</div>
+		                                			</div>
+	                            				</div>
+	                            				<div class="row">
+													<div class="col-sm-6 col-sm-offset-3">
+                                    					<input type='button' class='btn btn-bg-blue btn-edit compose-clause-temp-lib-pre-btn' name='previous' value='Previous' />
+														<input type="button" class="btn btn-bg-blue btn-edit compose-clause-temp-lib-save-btn" name="save" value="Save">
+				                                    	<input type='button' class='btn btn-fill btn-bg-blue btn-edit compose-clause-temp-lib-save-next-btn' name='next' value='Next' />
+													</div>
+												</div>
+			                            	</div>
+		                            	</div>
+		                            </div>
+		                        </div> 
+                            </div>

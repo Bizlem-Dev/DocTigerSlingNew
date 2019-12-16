@@ -1,0 +1,93 @@
+body{
+	background-color: #f1f1f1;
+	padding: 30px 0px;
+	font-family: 'Raleway', sans-serif;
+}
+.mt-30{
+	margin-top: 30px;
+}
+.form-group{
+	margin-bottom: 30px;
+}
+select.form-control,
+input.form-control{
+	border-radius: 0px;
+}
+.mr-15{
+	margin-right: 15px;
+}
+.content-section .btn{
+	border-radius: 2px;
+	font-weight: bold;
+}
+.content-section .btn.btn-big{
+	min-width: 100px;
+}
+.btn-custom{
+	background-color: #657ab5;
+	color: #fff;
+}
+.btn-custom:focus,
+.btn-custom:hover{
+	background-color: #4f6aa8;
+	color: #fff;	
+}
+.content-section{
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
+	padding: 60px 30px;
+}
+.content-section h2{
+	 margin: 0px;
+  background: gray;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 15px;
+}
+.box {
+    min-height: 230px;
+    box-shadow: 0 0px 15px 5px rgba(0, 0, 0, 0.14);
+    border: 1px solid gray;
+}
+.box h2.box-title {
+    margin: 0px;
+    background: gray;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+
+.box ul{
+    margin: 0px;
+    list-style: none;
+    padding: 0px;
+}
+
+.box ul li{
+    padding:3px 30px;
+}
+
+.box-main-section{
+    margin-top: 15px;
+}
+
+.box-center{
+    margin-top: 30px;
+}
+.box-center .btn{
+    margin-bottom: 15px;
+}
+.box .selected{
+    background: #c1c1c1;
+    color: #fff;
+}
+.box h3{
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 600;
+    background: #4FB8D0;
+    color: #fff;
+    padding:3px 15px;
+}

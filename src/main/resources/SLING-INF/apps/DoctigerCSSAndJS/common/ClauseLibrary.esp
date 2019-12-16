@@ -1,0 +1,1236 @@
+<div class="tab-pane" id="clauseLibrary">
+<form name="formName">
+	<input type=hidden id="ParentClauseId" name="ParentClauseId" value=""/>
+	<input type=hidden id="SFObject" name="SFObject" value=""/>                  
+    <input type=hidden id="Pri_Key" name="Pri_Key" value=""/> 
+    <input type=hidden id="ipArr" name="ipArr" value=""/>
+	<input type=hidden id="opArr" name="opArr" value=""/>                  
+    <input type=hidden id="exparamArr" name="exparamArr" value=""/>
+    <input type=hidden id="wf_sel" name="wf_sel" value=""/>        
+    <input type=hidden id="rules" name="rules" value=""/>    
+    <input type=hidden id="RuleEngine" name="RuleEngine" value=""/> 
+    <input type=hidden id="RuleData" name="RuleData" value=""/> 
+    <input type=hidden id="Con" name="Con" value=""/>                                                    
+	<textarea id="base64" style="width:640;height:240;display:none;"></textarea>
+	<input type=hidden id="childClsDes" name="childClsDes" value=""/>	                                                    
+	<input type=hidden id="ClsDesnew" name="ClsDesnew" value=""/>
+	<input type=hidden id="mullangCom" name="mullangCom" value=""/>
+	<input type=hidden id="childArr" name="childArr" value=""/>
+	<input type=hidden id="childMulLangArr" name="childMulLangArr" value=""/>
+	<input type=hidden id="clsSaveType" name="clsSaveType" value="new"/>
+	<input type=hidden id="chClsSaveType" name="chClsSaveType" value="new"/>
+	<input type=hidden id="chClauseId" name="chClauseId" value=""/>
+	<input type=hidden id="docFileName" name="docFileName" value=""/>
+	<input type=hidden id="docFileData" name="docFileData" value=""/>
+	<input type=hidden id="parentClsId" name="parentClsId" value=""/>
+	<input type=hidden id="rowcnt" name="rowcnt" value=""/>
+</form>
+<div class="action-btn" id="action" style="display:none;"></div>
+                            	<div class="row">
+	                            	<div class="col-sm-12">
+		                            	<div class="row">
+		                            		<div class="col-sm-12">
+                                				<h4 class="info-text">Clause Library</h4>
+		                            		</div>
+		                            	</div>
+		                            	<div class="row">
+		                            		<div class="col-sm-8">
+										  		<button class="btn btn-bg-brown create-new-clause-btn">Create New Clause</button>
+		                            		</div>
+		                            	</div>
+		                            	<div class="row table-clause-library-main">
+		                            		<div class="col-sm-12">
+		                            			<table class="table table-bordered table-clause-library" id="clauses">
+		                            				<thead>
+		                            					<tr>
+		                            						<th>Clause Name</th>
+		                            						<th>Download Format</th>
+		                            						<th>Created By</th>
+		                            						<th>Approved By</th>
+		                            						<th>Date</th>
+		                            						<th>Version</th>
+		                            						<th style="width: 220px;">Action</th>
+		                            					</tr>
+		                            				</thead>		                            				
+		                            				<tbody class="main-div" id="clsBody">		                            					
+			                            					
+			                            			</tbody>
+		                            			</table>		                            			
+		                            		</div>
+		                            	</div>
+		                            	<div class="row createNewClauseMain" style="display: none;">
+		                            		<form method="post">
+			                            		<div class="col-sm-8">
+			                        				<div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">
+				                                					<div class="col-sm-3">
+															    		<label>Clause Name</label>
+						                                			</div>
+						                                			<div class="col-sm-6">
+							                                			<input type="text" class="form-control" name="clause_name" placeholder="Clause Name" id="cn">
+						                                			</div>	
+				                                				</div>
+				                                			</div>
+				                                		</div>
+					                                </div>    			
+					                                <div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">
+				                                					<div class="col-sm-3">
+															    		<label>Meta Data</label>
+						                                			</div>
+						                                			<div class="col-sm-6">
+							                                			<input type="text" class="form-control" name="meta_data" placeholder="Meta Data" id="md">
+						                                			</div>	
+				                                				</div>
+				                                			</div>
+				                                		</div>
+					                                </div>
+					                                <div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">
+				                                					<div class="col-sm-3">
+															    		<label>Description</label>
+						                                			</div>
+						                                			<div class="col-sm-6">
+							                                			<input type="text" class="form-control" name="description" placeholder="Description" id="de">
+						                                			</div>	
+				                                				</div>
+				                                			</div>
+				                                		</div>
+					                                </div>
+					                                <div class="form-group m-0">
+				                                		<div class="row">
+				                                			<div class="col-sm-12 addMore-sub">
+				                                				<div class="row">
+						                                			<div class="col-sm-4">
+						                                				<div class="checkExternalParameter">
+																		    <input id="external-parameter" type="checkbox" name="external-parameter" value="">
+																		    <label for="external-parameter">
+																		      <div class="checkbox"><i class="fa fa-check"></i></div>
+																		      <span>External Parameter</span>
+																		    </label>
+																	  	</div>
+						                                			</div>
+				                                				</div>
+				                                			</div>
+				                                		</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-12">
+															<input type="button" class="btn btn-bg-blue btn-edit cls-lib-new-cluse-previous-btn" name="previous" value="Previous">
+												  			<input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+												  			<input type="button" class="btn btn-bg-blue clause-library-save-next" name="save" value="Save & Next">
+														</div>
+													</div>
+			                            		</div>
+		                            		</form>
+		                            	</div>
+		                            	<div class="row select-sfdc-object-main m-0" style="display: none;">
+	                            			<div class="col-sm-10">
+	                            				<h5>Select SFDC Objects</h5>
+	                            			</div>
+		                            		<div class="col-sm-8">
+												<div class="form-group addMore m-0">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>SF Objects</label>
+					                                			</div>
+					                                			<div class="col-sm-6">
+					                                				<select class="form-control sf-object bg-gray selectpicker" data-live-search="true" id="SFObj">
+					                                					<option>--Select SF Objects--</option>
+					                                					<option value="Account">Account</option>
+					                                					<option value="Case">Case</option>
+					                                					<option value="Lead">Lead</option>
+					                                					<option value="Oppurtunity">Oppurtunity</option>
+					                                				</select>
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+												</div>  
+		                                	</div> 
+		                                	<div class="col-sm-12 box-main-section">
+		                                		<div class="row">
+		                                			<div class="col-sm-3 p-0">
+		                                				<div class="box box-left">
+		                                					<h2 class="box-title">Select SF Fields</h2>
+													  	</div>
+		                                			</div>
+		                                			<div class="col-sm-1 text-center">
+		                                				<div class="box-center">
+													    	<a class="btn click-right sm-btn-custom"><i class="fa fa-long-arrow-right"></i></a>
+													    	<a class="btn click-left sm-btn-custom"><i class="fa fa-long-arrow-left"></i></a>
+													  	</div>
+		                                			</div>
+		                                			<div class="col-sm-3 p-0">
+		                                				<div class="box box-right box-selected-sf-field" id="sel_SFFields"> 
+		                                					<h2 class="box-title">Selected SF Fields</h2>
+											  			</div>
+		                                			</div>
+		                                			<div class="col-sm-1 text-center">
+		                                				<div class="box-center">
+													    	<a class="btn click-right-primary-key sm-btn-custom"><i class="fa fa-long-arrow-right"></i></a>
+													    	<a class="btn click-left-primary-key sm-btn-custom"><i class="fa fa-long-arrow-left"></i></a>
+													  	</div>
+		                                			</div>
+		                                			<div class="col-sm-3 p-0">
+		                                				<div class="box box-primary-key"> 
+		                                					<h2 class="box-title">Select Primary Key</h2>
+											  			</div>
+		                                			</div>
+		                                		</div>
+		                                		<div class="row">
+		                                			<div class="col-sm-12">
+														<input type="button" class="btn btn-bg-blue btn-edit cls-lib-sfdc-previous-btn" name="previous" value="Previous">
+											  			<input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+											  			<input type="button" class="btn btn-bg-blue cls-lib-sfdc-save-next" name="save" value="Save & Next">
+													</div>
+		                                		</div>
+		                                	</div> 
+		                            	</div>
+		                            	<div class="row m-0 external-parameter-main" style="display: none;">
+		                            		<div class="row">
+		                            			<div class="col-sm-10">
+		                            				<h5>External Parameter Selected</h5>
+		                            			</div>
+		                            		</div>
+		                            		<div class="col-sm-9">
+		                            			<div class="row">
+		                            				<div class="col-sm-3">
+				                                		<input type="text" class="form-control primary-key-ext-para-cls-lib" value="primary key" placeholder="Primary Key" disabled="disabled" id="prikey">
+				                                	</div>
+		                            			</div>
+		                            		</div>
+		                            		<div class="col-sm-3 text-right">
+                                				<a class="btn btn-bg-orange-new sm-btn-custom web-services-add" id="webCls">Web Services</a>
+                                				<a class="btn btn-bg-brown sm-btn-custom web-services-add"><i class="fa fa-plus"></i></a>
+                                			</div>
+		                            		<div class="col-sm-11 add-url-name-main"></div>
+		                            		<div class="col-sm-12">
+			                            			<div class="row">
+					                            		<div class="col-sm-11 web-services" id="ws">
+					                            			<div class="row">
+					                            				<div class="col-sm-12">
+																	<div class="form-group addMore m-0">
+								                                		<div class="row addMore-main">
+								                                			<div class="col-sm-12 addMore-sub">	
+								                                				<div class="row">
+										                                			<div class="col-sm-3">
+										                                				<input type="text" class="form-control" placeholder="URL" name="url" value="" id="web-services-url">
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<input type="text" class="form-control" placeholder="Token" id="token">
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<input type="text" class="form-control" placeholder="Username" id="user">
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<input type="password" class="form-control" placeholder="Password" id="pass">
+										                                			</div>  	
+								                                				</div>
+								                                			</div>
+								                                		</div>
+																	</div> 
+							                                	</div>
+
+							                                	<div class="col-sm-12">
+																	<div class="form-group addMore m-0" >
+								                                		<div class="row addMore-main">
+								                                			<div class="col-sm-12 addMore-sub ipfld" id="ip">
+								                                				<div class="row" >
+								                                					<div class="col-sm-12">
+																			    		<label>Input Fields :</label>
+										                                			</div>
+										                                		</div>		
+								                                				<div class="row">
+										                                			<div class="col-sm-3">
+										                                				<input type="text" class="form-control" placeholder="Field Name" id="ip_fieldName">
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="ip_fieldType">
+										                                					<option value="">Field Type</option>
+										                                					<option value="1">Field Type 1</option>
+										                                					<option value="2">Field Type 2</option>
+										                                					<option value="3">Field Type 3</option>
+										                                				</select>
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<input type="number" class="form-control" placeholder="Field Length" id="ip_fieldLength">
+										                                			</div>
+										                                			<div class="col-sm-3 p-0">
+										                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addip"><i class="fa fa-plus"></i></a>
+										                                			</div>	
+								                                				</div>
+								                                			</div>
+								                                		</div>
+								                                		<div class="row addMore-copy" style="display: none;">
+								                                			<div class="col-sm-12 addMore-sub">
+								                                				<div class="row">
+										                                			<div class="col-sm-3">
+										                                				<input type="text" class="form-control" placeholder="Field Name" id="ip_fieldNameCopy">
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="ip_fieldTypeCopy">
+										                                					<option value="">Field Type</option>
+										                                					<option value="1">Field Type 1</option>
+										                                					<option value="2">Field Type 2</option>
+										                                					<option value="3">Field Type 3</option>
+										                                				</select>
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<input type="number" class="form-control" placeholder="Field Length" id="ip_fieldLengthCopy">
+										                                			</div>
+										                                			<div class="col-sm-3 p-0">
+										                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+										                                			</div>
+								                                				</div>
+								                                			</div>
+								                                		</div>
+																	</div> 
+							                                	</div> 
+
+							                                	<div class="col-sm-12">
+																	<div class="form-group addMore">
+								                                		<div class="row addMore-main">
+								                                			<div class="col-sm-12 addMore-sub opfld" id="op">
+								                                				<div class="row">
+								                                					<div class="col-sm-12">
+																			    		<label>Output Fields :</label>
+										                                			</div>
+										                                		</div>	
+								                                				<div class="row">
+										                                			<div class="col-sm-3">
+										                                				<input type="text" class="form-control" placeholder="Field Name" id="op_fieldName">
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="op_fieldType">
+										                                					<option value="">Field Type</option>
+										                                					<option value="1">Field Type 1</option>
+										                                					<option value="2">Field Type 2</option>
+										                                					<option value="3">Field Type 3</option>
+										                                				</select>
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<input type="number" class="form-control" placeholder="Field Length" id="op_fieldLength">
+										                                			</div>
+										                                			<div class="col-sm-3 p-0">
+										                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addop"><i class="fa fa-plus"></i></a>
+										                                			</div>	
+								                                				</div>
+								                                			</div>
+								                                		</div>
+								                                		<div class="row addMore-copy opfld" style="display: none;">
+								                                			<div class="col-sm-12 addMore-sub">
+								                                				<div class="row">
+										                                			<div class="col-sm-3">
+										                                				<input type="text" class="form-control" placeholder="Field Name" id="op_fieldNameCopy">
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="op_fieldTypeCopy">
+										                                					<option value="">Field Type</option>
+										                                					<option value="1">Field Type 1</option>
+										                                					<option value="2">Field Type 2</option>
+										                                					<option value="3">Field Type 3</option>
+										                                				</select>
+										                                			</div>
+										                                			<div class="col-sm-3">
+										                                				<input type="number" class="form-control" placeholder="Field Length" id="op_fieldLengthCopy">
+										                                			</div>
+										                                			<div class="col-sm-3 p-0">
+										                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+										                                			</div>
+								                                				</div>
+								                                			</div>
+								                                		</div>
+																	</div> 
+							                                	</div> 
+					                            			</div>
+					                            		</div>
+					                            		<div class="col-sm-11">
+					                            			<div class="row">
+					                            				<div class="col-sm-6">
+																	<div class="form-group addMore">
+								                                		<div class="row addMore-main">
+								                                			<div class="col-sm-12 addMore-sub">	
+								                                				<div class="row">
+										                                			<div class="col-sm-4">
+										                                				<input type="file" name="file[]" class="test-xls" id="upload-xls" style="display: none;">
+										                                				<label class="btn btn-bg-orange sm-btn-custom" for="upload-xls" title="Upload XLS"><i class="fa fa-upload"></i>  </label> <br>
+										                                				<small class="test-xls-filename color-dark" id="upload-xls-filename">File Name</small>
+										                                			</div>
+										                                			<div class="col-sm-3 p-0">
+										                                				<a class="btn btn-bg-brown add-more-btn-b-file sm-btn-custom"><i class="fa fa-plus"></i></a>
+										                                			</div>	
+								                                				</div>
+								                                			</div>
+								                                		</div>
+								                                		<div class="row addMore-copy" style="display: none;">
+								                                			<div class="col-sm-12 addMore-sub">
+								                                				<div class="row">
+										                                			<div class="col-sm-4">
+										                                				<input type="file" name="file[]" class="test-xls" id="upload-xls**1**" style="display: none;">
+										                                				<label class="btn btn-bg-orange sm-btn-custom" for="upload-xls**1**" title="Upload XLS"><i class="fa fa-upload"></i> </label> <br>  
+										                                				<small class="test-xls-filename color-dark" id="upload-xls-filename">File Name</small>
+										                                			</div>
+										                                			<div class="col-sm-3 p-0">
+										                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+										                                			</div>
+								                                				</div>
+								                                			</div>
+								                                		</div>
+																	</div> 
+							                                	</div>  
+					                            			</div>
+					                            		</div>	
+			                            			</div> 
+			                            	</div>
+		                            		<div class="col-sm-12">
+												<input type="button" class="btn btn-bg-blue btn-edit cls-lib-external-para-previous-btn" name="previous" value="Previous">
+									  			<input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+									  			<input type="button" class="btn btn-bg-blue cls-lib-external-para-save-next" name="save" value="Save & Next">
+											</div>
+		                            	</div>
+										<div class="row compose-clause-main m-0" style="display: none;">
+											<div class="form-group addMore-p m-0">
+				                        		<div class="row addMore-main-p">
+				                        			<div class="col-sm-6 addMore-sub-p compose-cls" style="margin-bottom:30px;" id="com-cls">
+				                        				<div class="row">
+				                        					<div class="col-md-10">
+				                        						<div class="row">
+							                            			<div class="col-sm-10" >
+							                            				<select data-placeholder="Choose a Language..." style="padding:10px 10px 10px 10px;" id="selLangCompose">
+																		  <option value="AF">Afrikanns</option>
+																		  <option value="SQ">Albanian</option>
+																		  <option value="AR">Arabic</option>
+																		  <option value="HY">Armenian</option>
+																		  <option value="EU">Basque</option>
+																		  <option value="BN">Bengali</option>
+																		  <option value="BG">Bulgarian</option>
+																		  <option value="CA">Catalan</option>
+																		  <option value="KM">Cambodian</option>
+																		  <option value="ZH">Chinese (Mandarin)</option>
+																		  <option value="HR">Croation</option>
+																		  <option value="CS">Czech</option>
+																		  <option value="DA">Danish</option>
+																		  <option value="NL">Dutch</option>
+																		  <option value="EN">English</option>
+																		  <option value="ET">Estonian</option>
+																		  <option value="FJ">Fiji</option>
+																		  <option value="FI">Finnish</option>
+																		  <option value="FR">French</option>
+																		  <option value="KA">Georgian</option>
+																		  <option value="DE">German</option>
+																		  <option value="EL">Greek</option>
+																		  <option value="GU">Gujarati</option>
+																		  <option value="HE">Hebrew</option>
+																		  <option value="HI">Hindi</option>
+																		  <option value="HU">Hungarian</option>
+																		  <option value="IS">Icelandic</option>
+																		  <option value="ID">Indonesian</option>
+																		  <option value="GA">Irish</option>
+																		  <option value="IT">Italian</option>
+																		  <option value="JA">Japanese</option>
+																		  <option value="JW">Javanese</option>
+																		  <option value="KO">Korean</option>
+																		  <option value="LA">Latin</option>
+																		  <option value="LV">Latvian</option>
+																		  <option value="LT">Lithuanian</option>
+																		  <option value="MK">Macedonian</option>
+																		  <option value="MS">Malay</option>
+																		  <option value="ML">Malayalam</option>
+																		  <option value="MT">Maltese</option>
+																		  <option value="MI">Maori</option>
+																		  <option value="MR">Marathi</option>
+																		  <option value="MN">Mongolian</option>
+																		  <option value="NE">Nepali</option>
+																		  <option value="NO">Norwegian</option>
+																		  <option value="FA">Persian</option>
+																		  <option value="PL">Polish</option>
+																		  <option value="PT">Portuguese</option>
+																		  <option value="PA">Punjabi</option>
+																		  <option value="QU">Quechua</option>
+																		  <option value="RO">Romanian</option>
+																		  <option value="RU">Russian</option>
+																		  <option value="SM">Samoan</option>
+																		  <option value="SR">Serbian</option>
+																		  <option value="SK">Slovak</option>
+																		  <option value="SL">Slovenian</option>
+																		  <option value="ES">Spanish</option>
+																		  <option value="SW">Swahili</option>
+																		  <option value="SV">Swedish </option>
+																		  <option value="TA">Tamil</option>
+																		  <option value="TT">Tatar</option>
+																		  <option value="TE">Telugu</option>
+																		  <option value="TH">Thai</option>
+																		  <option value="BO">Tibetan</option>
+																		  <option value="TO">Tonga</option>
+																		  <option value="TR">Turkish</option>
+																		  <option value="UK">Ukranian</option>
+																		  <option value="UR">Urdu</option>
+																		  <option value="UZ">Uzbek</option>
+																		  <option value="VI">Vietnamese</option>
+																		  <option value="CY">Welsh</option>
+																		  <option value="XH">Xhosa</option>
+																		</select>
+							                            			</div>
+						                            			</div>
+						                            			<br>
+																<div class="row">
+							                            			<div class="col-sm-12 addMore-b">
+																	<div class="row">
+							                                			<div class="col-sm-3">
+									                                		<div class="radio">
+																				<input type="radio" class="upload_file" name="radio-group" checked id="UpFileCompose">
+																				<label class="upload_file_for" for="UpFileCompose" style="padding:0px 0px 0px 20px; ">Upload File</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-8 upload-file-main" style="display: none;">
+							                                				<div class="row">
+							                                					<div class="col-sm-6">
+							                                						<button class="btn btn-bg-orange sm-btn-custom"><i class="fa fa-download"></i></button> &nbsp; &nbsp;
+							                                					</div>
+							                                					<div class="col-sm-6">
+												                                	<input type="file" name="file[]" class="test-doc" id="upload-doc" style="display: none;">
+																                    <label class="btn btn-bg-orange sm-btn-custom" for="upload-doc" title="Upload Doc" style=""><i class="fa fa-upload"></i> </label> <br> 
+																                    <small class="test-doc-filename color-dark" id="upload-doc-filename" style="">File Name</small>
+							                                					</div>
+							                                				</div>
+							                                			</div>
+						                            				</div>
+						                            				<div class="row">
+							                                			<div class="col-sm-3">
+																			<div class="radio">
+																				<input type="radio" class="compose_online" name="radio-group" id="ComposeOL">
+																				<label class="compose_online_for" for="ComposeOL" style="padding:0px 0px 0px 20px;">Compose Online</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-12 compose-online-main" style="display: none;">
+							                                				<div class="row">
+																				<div class="col-sm-10">
+														                            <input type="text" name="" class="form-control" placeholder="FName LName Age...." style="margin: 15px 0px 0px 21px;" disabled="disabled">
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<div class="form-group addMore m-0">
+												                                		<div class="row addMore-main">
+												                                			<br>
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row">
+												                                					<div class="col-sm-3">
+																										<label>Clause Description</label>
+												                                					</div>
+														                                			<div class="col-sm-7">
+														                                				<textarea class="form-control text-area comClsDes" rows="3" placeholder="Description" id="composeClsDes"></textarea>
+														                                			</div>
+														                                			<div class="col-sm-1 p-0">
+														                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addcls"><i class="fa fa-plus"></i></a>
+														                                			</div>	
+												                                				</div>
+												                                			</div>
+												                                		</div>
+												                                		<div class="row addMore-copy" style="display: none;">
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row"> 
+														                                			<div class="col-sm-7 col-sm-offset-3">
+														                                				<textarea class="form-control text-area" rows="3"></textarea>
+														                                			</div>
+														                                			<div class="col-sm-1 p-0">
+														                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+														                                			</div>
+												                                				</div>
+												                                			</div>
+												                                		</div>
+																					</div>
+																				</div>
+																			</div>
+							                                			</div>
+						                            				</div>
+								                            		</div>
+																</div>
+				                        					</div>
+				                        					<div class="col-md-2">
+			                                					<a class="btn add-more-btn-p"><i class="fa fa-plus"></i></a>
+				                        					</div>
+				                        				</div>
+				                        			</div>
+				                        		</div>
+				                        		<div class="row addMore-copy-p" style="display: none;">
+                        							<div class="col-sm-6 addMore-sub-p" style="margin-bottom:30px;">
+                        								<div class="col-md-10">
+				                        						<div class="row">
+							                            			<div class="col-sm-10" >
+							                            				<select data-placeholder="Choose a Language..." style="padding:10px 10px 10px 10px;" id="selLangComposeCpy">
+																		  <option value="AF">Afrikanns</option>
+																		  <option value="SQ">Albanian</option>
+																		  <option value="AR">Arabic</option>
+																		  <option value="HY">Armenian</option>
+																		  <option value="EU">Basque</option>
+																		  <option value="BN">Bengali</option>
+																		  <option value="BG">Bulgarian</option>
+																		  <option value="CA">Catalan</option>
+																		  <option value="KM">Cambodian</option>
+																		  <option value="ZH">Chinese (Mandarin)</option>
+																		  <option value="HR">Croation</option>
+																		  <option value="CS">Czech</option>
+																		  <option value="DA">Danish</option>
+																		  <option value="NL">Dutch</option>
+																		  <option value="EN">English</option>
+																		  <option value="ET">Estonian</option>
+																		  <option value="FJ">Fiji</option>
+																		  <option value="FI">Finnish</option>
+																		  <option value="FR">French</option>
+																		  <option value="KA">Georgian</option>
+																		  <option value="DE">German</option>
+																		  <option value="EL">Greek</option>
+																		  <option value="GU">Gujarati</option>
+																		  <option value="HE">Hebrew</option>
+																		  <option value="HI">Hindi</option>
+																		  <option value="HU">Hungarian</option>
+																		  <option value="IS">Icelandic</option>
+																		  <option value="ID">Indonesian</option>
+																		  <option value="GA">Irish</option>
+																		  <option value="IT">Italian</option>
+																		  <option value="JA">Japanese</option>
+																		  <option value="JW">Javanese</option>
+																		  <option value="KO">Korean</option>
+																		  <option value="LA">Latin</option>
+																		  <option value="LV">Latvian</option>
+																		  <option value="LT">Lithuanian</option>
+																		  <option value="MK">Macedonian</option>
+																		  <option value="MS">Malay</option>
+																		  <option value="ML">Malayalam</option>
+																		  <option value="MT">Maltese</option>
+																		  <option value="MI">Maori</option>
+																		  <option value="MR">Marathi</option>
+																		  <option value="MN">Mongolian</option>
+																		  <option value="NE">Nepali</option>
+																		  <option value="NO">Norwegian</option>
+																		  <option value="FA">Persian</option>
+																		  <option value="PL">Polish</option>
+																		  <option value="PT">Portuguese</option>
+																		  <option value="PA">Punjabi</option>
+																		  <option value="QU">Quechua</option>
+																		  <option value="RO">Romanian</option>
+																		  <option value="RU">Russian</option>
+																		  <option value="SM">Samoan</option>
+																		  <option value="SR">Serbian</option>
+																		  <option value="SK">Slovak</option>
+																		  <option value="SL">Slovenian</option>
+																		  <option value="ES">Spanish</option>
+																		  <option value="SW">Swahili</option>
+																		  <option value="SV">Swedish </option>
+																		  <option value="TA">Tamil</option>
+																		  <option value="TT">Tatar</option>
+																		  <option value="TE">Telugu</option>
+																		  <option value="TH">Thai</option>
+																		  <option value="BO">Tibetan</option>
+																		  <option value="TO">Tonga</option>
+																		  <option value="TR">Turkish</option>
+																		  <option value="UK">Ukranian</option>
+																		  <option value="UR">Urdu</option>
+																		  <option value="UZ">Uzbek</option>
+																		  <option value="VI">Vietnamese</option>
+																		  <option value="CY">Welsh</option>
+																		  <option value="XH">Xhosa</option>
+																		</select>
+							                            			</div>
+						                            			</div>
+						                            			<br>
+																<div class="row">
+							                            			<div class="col-sm-12 addMore-b">
+																	<div class="row">
+							                                			<div class="col-sm-3">
+									                                		<div class="radio">
+																				<input type="radio" class="upload_file" id="uploadFile" name="radio-group1" checked>
+																				<label class="upload_file_for" for="uploadFile" style="padding:0px 0px 0px 20px; ">Upload File</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-8 upload-file-main" style="display: none;">
+							                                				<div class="row">
+							                                					<div class="col-sm-6">
+							                                						<button class="btn btn-bg-orange sm-btn-custom"><i class="fa fa-download"></i></button> &nbsp; &nbsp;
+							                                					</div>
+							                                					<div class="col-sm-6">
+												                                	<input type="file" name="file[]" class="test-doc" id="upload-doc" style="display: none;">
+																                    <label class="btn btn-bg-orange sm-btn-custom" for="upload-doc" title="Upload Doc" style=""><i class="fa fa-upload"></i> </label> <br> 
+																                    <small class="test-doc-filename color-dark" id="upload-doc-filename" style="">File Name</small>
+							                                					</div>
+							                                				</div>
+							                                			</div>
+						                            				</div>
+						                            				<div class="row">
+							                                			<div class="col-sm-3">
+																			<div class="radio">
+																				<input type="radio" class="compose_online" id="composeOnline" name="radio-group1">
+																				<label class="compose_online_for" for="composeOnline" style="padding:0px 0px 0px 20px;">Compose Online</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-12 compose-online-main" style="display: none;">
+							                                				<div class="row">
+																				<div class="col-sm-10">
+														                            <input type="text" name="" class="form-control" placeholder="FName LName Age...." style="margin: 15px 0px 0px 21px;" disabled="disabled">
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<div class="form-group addMore m-0">
+												                                		<div class="row addMore-main">
+												                                			<br>
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row">
+												                                					<div class="col-sm-3">
+																										<label>Clause Description</label>
+												                                					</div>
+														                                			<div class="col-sm-7">
+														                                				<textarea class="form-control text-area1 comClsDes1" rows="3" placeholder="Description" id="composeClsDesCpy"></textarea>
+														                                			</div>
+														                                			<div class="col-sm-1 p-0">
+														                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addclsCopy"><i class="fa fa-plus"></i></a>
+														                                			</div>	
+												                                				</div>
+												                                			</div>
+												                                		</div>
+												                                		<div class="row addMore-copy" style="display: none;">
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row">
+														                                			<div class="col-sm-7 col-sm-offset-3 comClsDesCopy">
+														                                				<textarea class="form-control text-area1" rows="3"></textarea>
+														                                			</div>
+														                                			<div class="col-sm-1 p-0">
+														                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+														                                			</div>
+												                                				</div>
+												                                			</div>
+												                                		</div>
+																					</div>
+																				</div>
+																			</div>
+							                                			</div>
+						                            				</div>
+								                            		</div>
+																</div>
+				                        				</div>
+                        							</div>
+                        						</div>	
+				                        	</div>
+											<div class="col-sm-12 col-md-12 above-advance-select">
+												<div class="form-group m-0">
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+					                                			<div class="col-sm-3">
+					                                				<div class="checkWorkflowCluseLib">
+																	    <input id="workflowCluseLib1" type="checkbox" name="workflow-cluse-lib" />
+																	    <label for="workflowCluseLib1">
+																	      <div class="checkbox"><i class="fa fa-check"></i></div>
+																	      <span>Workflow</span>
+																	    </label>
+																  	</div>
+					                                			</div>	
+					                                			<div class="col-sm-3">
+					                                				<div class="checkRulesBasedCluseLib">
+																	    <input id="rulesBasedCluseLib1" type="checkbox" name="rules-based-cluse-lib" />
+																	    <label for="rulesBasedCluseLib1">
+																	      <div class="checkbox"><i class="fa fa-check"></i></div>
+																	      <span>Rules Based</span>
+																	    </label>
+																  	</div>
+					                                			</div>
+					                                			<div class="col-sm-3">
+					                                				<div class="checkControllerCluseLib">
+																	    <input id="controllerCluseLib1" type="checkbox" name="controller-cluse-lib" />
+																	    <label for="controllerCluseLib1">
+																	      <div class="checkbox"><i class="fa fa-check"></i></div>
+																	      <span>Controller</span>
+																	    </label>
+																  	</div>
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+												</div>
+												<div class="form-group addMore m-0 select-workflow-parent-clause-lib" style="display: none;">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Select Workflow</label>
+					                                			</div>
+					                                			<div class="col-sm-5" id="Sel_workflow">
+					                                				
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+												<div class="form-group addMore m-0 select-rule-parent-clause-lib" style="display: none;">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Select Rule</label>
+					                                			</div>
+					                                			<div class="col-sm-5" id="Sel_Rule">
+					                                				
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+			                                	<div class="form-group addMore m-0 select-controller-parent-clause-lib" style="display: none;">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Select Controller</label>
+					                                			</div>
+					                                			<div class="col-sm-5" id="Sel_Controller">
+					                                				
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+											</div>
+											<div class="col-sm-12 col-md-12">
+												<div class="row">
+													<div class="col-sm-12 col-sm-offset-3">
+				                                    	<input type='button' class='btn btn-bg-blue compose-clause-previous-btn' name='previous' value='Previous' />
+				                                    	<input type='button' class='btn btn-bg-blue compose-clause-save-btn' name='save' value='Save' />
+				                                    	<!-- <input type='button' class='btn btn-next btn-fill btn-bg-blue' name='next' value='Next' /> -->
+													</div>
+												</div>
+											</div>
+		                            	</div>
+		                            	<div class="row parent-clause-main" style="display: none;">
+		                            		<div class="row m-0">
+		                            			<div class="col-sm-10">
+		                            				<h5 class="previous-parent-on-title">Parent Clause Name <input type="text" value="" id="parentCls"></h5>
+		                            			</div>
+		                            		</div>
+		                            		<div class="col-sm-12 addMore-b">
+			                                	<div class="form-group addMore m-0">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-10 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Selected Fields</label>
+					                                			</div>
+					                                			<div class="col-sm-5">
+					                                				<input type="text" name="" class="form-control form-control-white" placeholder="FName LName Age...." disabled="disabled">
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+			                                	<div class="form-group addMore m-0 bg-dark-silver pt-10">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-2 child-clause-name-list"></div>
+			                                			<div class="col-sm-10 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3 child-clause-name-checkbox">
+			                                						<a href="#" class="tooltip1">
+			                                							<i class="fa fa-question-circle"></i>
+																	  	<span class="tooltiptext">Display Name in Template</span>
+																	</a>
+														    		<input id="child-clause-name" type="checkbox" name="child-clause-name" />
+																	<label for="child-clause-name">
+																	  <div class="checkbox"><i class="fa fa-check"></i></div>
+																	  <span>Child Clause Name</span>
+																	</label>
+					                                			</div>
+					                                			<div class="col-sm-5">
+							                                		<input type="text" class="form-control child-clause-name" name="child_clause_name" placeholder="Child Clause Name" id="childClauseName">
+					                                			</div>
+					                                			<div class="col-sm-2 p-0">
+					                                				<a class="btn btn-bg-brown add-more-btn-child-clause-name sm-btn-custom">Go</a>
+					                                				<a class="btn btn-bg-brown sm-btn-custom add-meta-data-desc-btn"><i class="fa fa-arrow-up"></i></a>
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+			                                	<div class="form-group addMore m-0 bg-dark-silver meta-data-desc">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-10 col-sm-offset-2 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Meta Data</label>
+					                                			</div>
+					                                			<div class="col-sm-5">
+							                                		<input type="text" class="form-control meta-data-parent-cls-lib" name="meta_data" placeholder="Meta Data" id="chldMD">
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+			                                	<div class="form-group addMore m-0 bg-dark-silver meta-data-desc">
+			                                		<div class="row addMore-main">
+			                                			<div class="col-sm-10 col-sm-offset-2 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Description</label>
+					                                			</div>
+					                                			<div class="col-sm-5">
+							                                		<input type="text" class="form-control description-parent-cls-lib" name="description" placeholder="Description" id="chldDes">
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+											<div class="row" style="margin:0px 0px;background-color:#F1F1F1;">
+												<div class="form-group addMore-np m-0">
+				                        		<div class="row addMore-main-np">
+				                        			<div class="col-sm-6 addMore-sub-np com-cls-child" style="margin-bottom:30px;" id="com-cls-chld">
+				                        				<div class="row">
+				                        					<div class="col-md-10" style="padding-left:40px;">
+				                        						<div class="row">
+							                            			<div class="col-sm-10" >
+							                            				<select data-placeholder="Choose a Language..." style="padding:10px 10px 10px 10px;" id="selLang">
+																		  <option value="AF">Afrikanns</option>
+																		  <option value="SQ">Albanian</option>
+																		  <option value="AR">Arabic</option>
+																		  <option value="HY">Armenian</option>
+																		  <option value="EU">Basque</option>
+																		  <option value="BN">Bengali</option>
+																		  <option value="BG">Bulgarian</option>
+																		  <option value="CA">Catalan</option>
+																		  <option value="KM">Cambodian</option>
+																		  <option value="ZH">Chinese (Mandarin)</option>
+																		  <option value="HR">Croation</option>
+																		  <option value="CS">Czech</option>
+																		  <option value="DA">Danish</option>
+																		  <option value="NL">Dutch</option>
+																		  <option value="EN">English</option>
+																		  <option value="ET">Estonian</option>
+																		  <option value="FJ">Fiji</option>
+																		  <option value="FI">Finnish</option>
+																		  <option value="FR">French</option>
+																		  <option value="KA">Georgian</option>
+																		  <option value="DE">German</option>
+																		  <option value="EL">Greek</option>
+																		  <option value="GU">Gujarati</option>
+																		  <option value="HE">Hebrew</option>
+																		  <option value="HI">Hindi</option>
+																		  <option value="HU">Hungarian</option>
+																		  <option value="IS">Icelandic</option>
+																		  <option value="ID">Indonesian</option>
+																		  <option value="GA">Irish</option>
+																		  <option value="IT">Italian</option>
+																		  <option value="JA">Japanese</option>
+																		  <option value="JW">Javanese</option>
+																		  <option value="KO">Korean</option>
+																		  <option value="LA">Latin</option>
+																		  <option value="LV">Latvian</option>
+																		  <option value="LT">Lithuanian</option>
+																		  <option value="MK">Macedonian</option>
+																		  <option value="MS">Malay</option>
+																		  <option value="ML">Malayalam</option>
+																		  <option value="MT">Maltese</option>
+																		  <option value="MI">Maori</option>
+																		  <option value="MR">Marathi</option>
+																		  <option value="MN">Mongolian</option>
+																		  <option value="NE">Nepali</option>
+																		  <option value="NO">Norwegian</option>
+																		  <option value="FA">Persian</option>
+																		  <option value="PL">Polish</option>
+																		  <option value="PT">Portuguese</option>
+																		  <option value="PA">Punjabi</option>
+																		  <option value="QU">Quechua</option>
+																		  <option value="RO">Romanian</option>
+																		  <option value="RU">Russian</option>
+																		  <option value="SM">Samoan</option>
+																		  <option value="SR">Serbian</option>
+																		  <option value="SK">Slovak</option>
+																		  <option value="SL">Slovenian</option>
+																		  <option value="ES">Spanish</option>
+																		  <option value="SW">Swahili</option>
+																		  <option value="SV">Swedish </option>
+																		  <option value="TA">Tamil</option>
+																		  <option value="TT">Tatar</option>
+																		  <option value="TE">Telugu</option>
+																		  <option value="TH">Thai</option>
+																		  <option value="BO">Tibetan</option>
+																		  <option value="TO">Tonga</option>
+																		  <option value="TR">Turkish</option>
+																		  <option value="UK">Ukranian</option>
+																		  <option value="UR">Urdu</option>
+																		  <option value="UZ">Uzbek</option>
+																		  <option value="VI">Vietnamese</option>
+																		  <option value="CY">Welsh</option>
+																		  <option value="XH">Xhosa</option>
+																		</select>
+							                            			</div>
+						                            			</div>
+						                            			<br>
+																<div class="row">
+							                            			<div class="col-sm-12 addMore-b">
+																	<div class="row">
+							                                			<div class="col-sm-3">
+									                                		<div class="radio">
+																				<input type="radio" class="upload_file" id="UploadFile" name="radio-Group" checked>
+																				<label class="upload_file_for" for="UploadFile" style="padding:0px 0px 0px 20px; ">Upload File</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-8 upload-file-main" style="display: none;">
+							                                				<div class="row">
+							                                					<div class="col-sm-6">
+							                                						<button class="btn btn-bg-orange sm-btn-custom"><i class="fa fa-download"></i></button> &nbsp; &nbsp;
+							                                					</div>
+							                                					<div class="col-sm-6">
+												                                	<input type="file" name="file[]" class="test-doc" id="upload-doc" style="display: none;">
+																                    <label class="btn btn-bg-orange sm-btn-custom" for="upload-doc" title="Upload Document" style=""><i class="fa fa-upload"></i> </label> <br> 
+																                    <small class="test-doc-filename color-dark" id="upload-doc-filename" style="">File Name</small>
+							                                					</div>
+							                                				</div>
+							                                			</div>
+						                            				</div>
+						                            				<div class="row">
+							                                			<div class="col-sm-3">
+																			<div class="radio">
+																				<input type="radio" class="compose_online" id="ComposeOnline" name="radio-Group">
+																				<label class="compose_online_for" for="ComposeOnline" style="padding:0px 0px 0px 20px;">Compose Online</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-12 compose-online-main" style="display: none;">
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<div class="form-group addMore m-0">
+												                                		<div class="row addMore-main">
+												                                			<br>
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row">
+												                                					<div class="col-sm-12">
+																										<label>Clause Description</label>
+												                                					</div>
+														                                			<div class="col-sm-11">
+														                                				<textarea class="form-control text-area2 comClsDes2" rows="3" placeholder="Description" id="composeClsDeChld"></textarea>	
+
+														                                				<div class="row lev1-desc-main">
+														                                					<div class="col-sm-12 lev1-desc-copy-app">
+														                                						
+														                                					</div>
+														                                				</div>
+														                                			</div>
+														                                			<div class="col-sm-1 p-0" id="para">
+														                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addclschld"><i class="fa fa-plus"></i></a>
+														                                			</div>	
+												                                				</div>
+												                                			</div>
+												                                		</div>
+												                                		<div class="row addMore-copy" style="display: none;">
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row">
+												                                					
+														                                			<div class="col-sm-11">
+														                                				<textarea class="form-control text-area2" rows="3" placeholder="Description"></textarea>	
+														                                			</div>
+														                                			<div class="col-sm-1 p-0">
+														                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+														                                			</div>
+												                                				</div>
+												                                			</div>
+												                                		</div>
+																					</div>
+																				</div>
+																			</div>
+							                                			</div>
+						                            				</div>
+								                            		</div>
+																</div>
+				                        					</div>
+				                        					<div class="col-md-2">
+			                                					<a class="btn add-more-btn-np"><i class="fa fa-plus"></i></a>
+				                        					</div>
+				                        				</div>
+				                        			</div>
+				                        		</div>
+				                        		<div class="row addMore-copy-np" style="display: none;">
+                        							<div class="col-sm-6 addMore-sub-np" style="margin-bottom:30px;">
+                        								<div class="col-md-10" style="padding-left:40px;"> 
+				                        						<div class="row">
+							                            			<div class="col-sm-10">
+							                            				<select data-placeholder="Choose a Language..." style="padding:10px 10px 10px 10px;">
+																		  <option value="AF">Afrikanns</option>
+																		  <option value="SQ">Albanian</option>
+																		  <option value="AR">Arabic</option>
+																		  <option value="HY">Armenian</option>
+																		  <option value="EU">Basque</option>
+																		  <option value="BN">Bengali</option>
+																		  <option value="BG">Bulgarian</option>
+																		  <option value="CA">Catalan</option>
+																		  <option value="KM">Cambodian</option>
+																		  <option value="ZH">Chinese (Mandarin)</option>
+																		  <option value="HR">Croation</option>
+																		  <option value="CS">Czech</option>
+																		  <option value="DA">Danish</option>
+																		  <option value="NL">Dutch</option>
+																		  <option value="EN">English</option>
+																		  <option value="ET">Estonian</option>
+																		  <option value="FJ">Fiji</option>
+																		  <option value="FI">Finnish</option>
+																		  <option value="FR">French</option>
+																		  <option value="KA">Georgian</option>
+																		  <option value="DE">German</option>
+																		  <option value="EL">Greek</option>
+																		  <option value="GU">Gujarati</option>
+																		  <option value="HE">Hebrew</option>
+																		  <option value="HI">Hindi</option>
+																		  <option value="HU">Hungarian</option>
+																		  <option value="IS">Icelandic</option>
+																		  <option value="ID">Indonesian</option>
+																		  <option value="GA">Irish</option>
+																		  <option value="IT">Italian</option>
+																		  <option value="JA">Japanese</option>
+																		  <option value="JW">Javanese</option>
+																		  <option value="KO">Korean</option>
+																		  <option value="LA">Latin</option>
+																		  <option value="LV">Latvian</option>
+																		  <option value="LT">Lithuanian</option>
+																		  <option value="MK">Macedonian</option>
+																		  <option value="MS">Malay</option>
+																		  <option value="ML">Malayalam</option>
+																		  <option value="MT">Maltese</option>
+																		  <option value="MI">Maori</option>
+																		  <option value="MR">Marathi</option>
+																		  <option value="MN">Mongolian</option>
+																		  <option value="NE">Nepali</option>
+																		  <option value="NO">Norwegian</option>
+																		  <option value="FA">Persian</option>
+																		  <option value="PL">Polish</option>
+																		  <option value="PT">Portuguese</option>
+																		  <option value="PA">Punjabi</option>
+																		  <option value="QU">Quechua</option>
+																		  <option value="RO">Romanian</option>
+																		  <option value="RU">Russian</option>
+																		  <option value="SM">Samoan</option>
+																		  <option value="SR">Serbian</option>
+																		  <option value="SK">Slovak</option>
+																		  <option value="SL">Slovenian</option>
+																		  <option value="ES">Spanish</option>
+																		  <option value="SW">Swahili</option>
+																		  <option value="SV">Swedish </option>
+																		  <option value="TA">Tamil</option>
+																		  <option value="TT">Tatar</option>
+																		  <option value="TE">Telugu</option>
+																		  <option value="TH">Thai</option>
+																		  <option value="BO">Tibetan</option>
+																		  <option value="TO">Tonga</option>
+																		  <option value="TR">Turkish</option>
+																		  <option value="UK">Ukranian</option>
+																		  <option value="UR">Urdu</option>
+																		  <option value="UZ">Uzbek</option>
+																		  <option value="VI">Vietnamese</option>
+																		  <option value="CY">Welsh</option>
+																		  <option value="XH">Xhosa</option>
+																		</select>
+							                            			</div>
+						                            			</div>
+						                            			<br>
+																<div class="row">
+							                            			<div class="col-sm-12 addMore-b">
+																	<div class="row">
+							                                			<div class="col-sm-3">
+									                                		<div class="radio">
+																				<input type="radio" class="upload_file" id="UploadFile1" name="radio-Group1" checked>
+																				<label class="upload_file_for" for="UploadFile1" style="padding:0px 0px 0px 20px; ">Upload File</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-8 upload-file-main" style="display: none;">
+							                                				<div class="row">
+							                                					<div class="col-sm-6">
+							                                						<button class="btn btn-bg-orange sm-btn-custom"><i class="fa fa-download"></i></button> &nbsp; &nbsp;
+							                                					</div>
+							                                					<div class="col-sm-6">
+												                                	<input type="file" name="file[]" class="test-doc" id="upload-doc" style="display: none;">
+																                    <label class="btn btn-bg-orange sm-btn-custom" for="upload-doc" title="Upload Document" style=""><i class="fa fa-upload"></i> </label> <br> 
+																                    <small class="test-doc-filename color-dark" id="upload-doc-filename" style="">File Name</small>
+							                                					</div>
+							                                				</div>
+							                                			</div>
+						                            				</div>
+						                            				<div class="row">
+							                                			<div class="col-sm-3">
+																			<div class="radio">
+																				<input type="radio" class="compose_online" id="ComposeOnline1" name="radio-Group1">
+																				<label class="compose_online_for" for="ComposeOnline1" style="padding:0px 0px 0px 20px;">Compose Online</label>
+																			</div>
+							                                			</div>	
+							                                			<div class="col-sm-12 compose-online-main" style="display: none;">
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<div class="form-group addMore m-0">
+												                                		<div class="row addMore-main">
+												                                			<br>
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row">
+												                                					<div class="col-sm-12">
+																										<label>Clause Description</label>
+												                                					</div>
+														                                			<div class="col-sm-11">
+														                                				<textarea class="form-control text-area3 comClsDes3" rows="3" placeholder="Description" id="comClsDesChldCpy"></textarea>	
+
+														                                				<div class="row lev1-desc-main">
+														                                					<div class="col-sm-12 lev1-desc-copy-app">
+														                                						
+														                                					</div>
+														                                				</div>
+														                                			</div>
+														                                			<div class="col-sm-1 p-0">
+														                                				<a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addclschldCopy"><i class="fa fa-plus"></i></a>
+														                                			</div>	
+												                                				</div>
+												                                			</div>
+												                                		</div>
+												                                		<div class="row addMore-copy" style="display: none;">
+												                                			<div class="col-sm-12 addMore-sub">
+												                                				<div class="row">
+												                                					
+														                                			<div class="col-sm-11">
+														                                				<textarea class="form-control text-area3" rows="3" placeholder="Description"></textarea>	
+														                                			</div>
+														                                			<div class="col-sm-1 p-0">
+														                                				<a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom"><i class="fa fa-trash"></i></a>
+														                                			</div>
+												                                				</div>
+												                                			</div>
+												                                		</div>
+																					</div>
+																				</div>
+																			</div>
+							                                			</div>
+						                            				</div>
+								                            	</div>
+															</div>
+				                        				</div>
+                        							</div>
+                        						</div>	
+				                        	</div>
+												
+											</div>
+			                            	</div>
+			                            	<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+				                                    <input type='button' class='btn btn-bg-blue parent-clause-previous-btn' name='previous' value='Previous' />
+				                                    <input type='button' class='btn btn-bg-blue' name='save' value='Save' />
+												  	<input type="button" class="btn btn-fill btn-bg-blue child-clause-save-btn" name="save" value="Save & Next">
+												</div>
+											</div>
+		                            	</div>
+		                            </div>
+		                        </div>    
+                            </div>
+                            
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                            
+                            
+
+                            

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>QR Code</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/css/custom.css">	
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/css/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/css/material-bootstrap-wizard-custom.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/css/bootstrap-select.min.css">
+    
+</head>
+<body>
+<%=request.getRemoteUser()%>
+
+<form name="formName">
+<input type=hidden id="email" name="email" value="<%=request.getRemoteUser()%>"/>                  
+	<input type=hidden id="headerLiArr" name="headerLiArr" value=""/>
+	</form>
+	<div class="container content-section">
+        <div class="row">
+	        <div class="col-sm-12">
+	        	<h2 class="text-center">QR Code</h2>
+	        </div>
+	    </div>    
+        <div class="row mt-30">
+	        <div class="col-sm-3 col-md-offset-1 form-group">
+		        <input type="text" name="qrTempName" placeholder="Template Name" class="form-control" disabled id="qr_tempName">
+	        </div> 
+	        <div class="col-md-10 col-md-offset-1">
+	        	<div class="row">
+	        		<div class="col-md-4">
+	        			<div class="row">
+	        				<div class="col-md-2">
+	        					<label>Size</label>
+	        				</div>
+	        				<div class="col-md-10 form-group">
+	        					<select class="form-control" id="selSize">
+	        						<option>Select Size</option>
+	        						<option>Small</option>
+	        						<option>Medium</option>
+	        						<option>Large</option>
+	        					</select>
+	        				</div>
+	        			</div>
+	        		</div>
+	        		<div class="col-md-4">
+	        			<div class="row">
+	        				<div class="col-md-2">
+	        					<label>Position</label>
+	        				</div>
+	        				<div class="col-md-10 form-group">
+	        					<select class="form-control" id="selPosition">
+	        						<option>Select Position</option>
+	        						<option>Top Left</option>
+	        						<option>Bottom Right</option>
+	        						<option>Bottom Center</option>
+	        						<option>Top Center</option>
+	        					</select>
+	        				</div>
+	        			</div>
+	        		</div>
+	        		<div class="col-md-4">
+	        			<div class="row">
+	        				<div class="col-md-2">
+	        					<label>Table No.</label>
+	        				</div>
+	        				<div class="col-md-10 form-group">
+	        					<input type="text" name="tableNo" id="table_No">
+	        				</div>
+	        			</div>
+	        		</div>
+        		</div>
+	        </div>
+	    </div>
+	   <div class="col-sm-12 box-main-section" style="margin-bottom: 25px;">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="box box-left-qr-lib" id="headerLi">
+                  <h2 class="box-title">Select SF Fields Param</h2>
+                  </div>
+                </div>
+				 <div class="col-sm-1 text-center">
+                <div class="box-center">
+                  <a class="btn click-right-qr-lib sm-btn-custom"><i class="fa fa-long-arrow-right"></i></a>
+                  <a class="btn click-left-qr-lib sm-btn-custom"><i class="fa fa-long-arrow-left"></i></a>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="box box-right-qr-lib" id="sel_headerLi">
+                  <h2 class="box-title">Selected SF Fields Param</h2>
+                  </div>
+                </div>
+              </div>             
+              </div>         	        	
+													    	
+				  
+	        	
+	       <br><br>
+	    <div class="col-sm-12 text-center">
+        	<button class="btn btn-danger btn-big mr-15">Cancel</button>
+        	<button class="btn btn-custom btn-big mr-15">Edit</button>
+        	<button class="btn btn-success btn-big save-QR">Save</button>
+        </div>
+	   </div>	    
+
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/js/bootstrap.min.js" type="text/javascript"></script>	
+	<script src="<%=request.getContextPath()%>/apps/DoctigerCSSAndJS/QRCode_Logo/js/qrCode.js" type="text/javascript"></script>	
+	
+	<script type="text/javascript">
+		$('body').on('click', '.add-more', function() { 
+			var copy = $(this).parents('.main-cont').find('.copy-cont').html();
+			$(this).parents('.main-cont').find('.add-cont').append(copy);
+		});
+		$('body').on('click', '.remove-more', function() { 
+			var div = $(this).parents('.main-cont').find('.add-cont .row:last-child').attr('data-class');
+			if(div != 'static'){
+				var div = $(this).parents('.main-cont').find('.add-cont .row:last-child').remove();
+			}
+
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<form name="formName">
+   <input type=hidden id="tempType" name="tempType" value=""/>
+   <input type=hidden id="mailTempName" name="mailTempName" value=""/>
+   <input type=hidden id="smsTempName" name="smsTempName" value=""/>
+   <input type=hidden id="base64mailtemp" name="base64mailtemp" value=""/>
+   <input type=hidden id="upfiledoc" name="upfiledoc" value=""/>
+   <input type=hidden id="mailtempSaveType" name="mailtempSaveType" value="new"/>
+</form>
+<div class="tab-pane" id="mailTemplateNew">
+   <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+         <div class="row">
+            <div class="col-sm-12">
+               <h4 class="info-text mb-15 mail-sms-temp-title"> Mail Template</h4>
+            </div>
+            <div class="col-sm-12">
+               <div class="row">
+                  <div class="col-sm-8">
+                     <button class="btn btn-bg-brown create-new-mail-template-btn">Create New Mail Template</button>
+                  </div>
+               </div>
+               <div class="row table-mail-template-main">
+                  <div class="col-sm-12">
+                     <table class="table table-bordered table-mail-template" id="mailTemps">
+                        <thead>
+                           <tr>
+                              <th>Template Name</th>
+                              <th>Download Format</th>
+                              <th>Created By</th>
+                              <th>Approved By</th>
+                              <th>Date</th>
+                              <th>Version</th>
+                              <th>Description</th>
+                              <th style="width: 230px;">Action</th>
+                           </tr>
+                        </thead>
+                        <tbody></tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class="row createNewMailTempMain" style="display: none;">
+                  <form method="" action="">
+                     <div class="col-sm-8">
+                        <div class="form-group m-0">
+                           <div class="row">
+                              <div class="col-sm-12 addMore-sub">
+                                 <div class="row" id="tempType">
+                                    <div class="col-sm-3">
+                                       <label>Template Type</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                       <input id="mail-temp" type="radio" name="mail-sms-temp" value="mail" checked="checked" />
+                                       <label for="mail-temp">
+                                       &nbsp; &nbsp; &nbsp;
+                                       <span>Mail</span>
+                                       </label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                       <input id="sms-temp" type="radio" name="mail-sms-temp" value="sms" />
+                                       <label for="sms-temp">
+                                       &nbsp; &nbsp; &nbsp;
+                                       <span>SMS</span>
+                                       </label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group m-0">
+                           <div class="row">
+                              <div class="col-sm-12 addMore-sub">
+                                 <div class="row">
+                                    <div class="col-sm-3">
+                                       <label>Template Name</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                       <input type="text" class="form-control temp-name" name="template_name" placeholder="Template Name">
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group m-0">
+                           <div class="row">
+                              <div class="col-sm-12 addMore-sub">
+                                 <div class="row">
+                                    <div class="col-sm-3">
+                                       <label>Meta Data</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                       <input type="text" class="form-control" name="meta_data" placeholder="Meta Data" id="mailTempMD">
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group m-0">
+                           <div class="row">
+                              <div class="col-sm-12 addMore-sub">
+                                 <div class="row">
+                                    <div class="col-sm-3">
+                                       <label>Description</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                       <input type="text" class="form-control" name="description" placeholder="Description" id="mailTempDes">
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group m-0">
+                           <div class="row">
+                              <div class="col-sm-12 addMore-sub">
+                                 <div class="row">
+                                    <div class="col-sm-4">
+                                       <div class="check-external-parameter-mail-temp">
+                                          <input id="external-parameter-mail-temp" type="checkbox" name="external-parameter-mail-temp">
+                                          <label for="external-parameter-mail-temp">
+                                             <div class="checkbox">
+                                                <i class="fa fa-check"></i>
+                                             </div>
+                                             <span>External Parameter</span>
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <input type="button" class="btn btn-bg-blue btn-edit mail-temp-new-pre-btn" name="previous" value="Previous">
+                              <input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+                              <input type="button" class="btn btn-bg-blue mail-template-save-next" name="save" value="Save & Next">
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="row select-sfdc-object-mail-temp-main" style="display: none;">
+                  <div class="row">
+                     <div class="col-sm-10">
+                        <h5>Select SFDC Objects</h5>
+                     </div>
+                  </div>
+                  <div class="col-sm-8">
+                     <div class="form-group addMore m-0">
+                        <div class="row addMore-main">
+                           <div class="col-sm-12 addMore-sub">
+                              <div class="row">
+                                 <div class="col-sm-3">
+                                    <label>SF Objects</label>
+                                 </div>
+                                 <div class="col-sm-6">
+                                    <select class="form-control sf-object-mail-temp bg-gray selectpicker" data-live-search="true">
+                                       <option>--Select SF Objects--</option>
+                                       <option value="Account">Account</option>
+                                       <option class="Case">Case</option>
+                                       <option class="Lead">Lead</option>
+                                       <option class="Oppurtunity">Oppurtunity</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-12 box-main-section">
+                     <div class="row">
+                        <div class="col-sm-3 p-0">
+                           <div class="box box-left-mail-temp">
+                              <h2 class="box-title">Select SF Fields</h2>
+                           </div>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                           <div class="box-center">
+                              <a class="btn click-right-mail-temp sm-btn-custom">
+                              <i class="fa fa-long-arrow-right"></i>
+                              </a>
+                              <a class="btn click-left-mail-temp sm-btn-custom">
+                              <i class="fa fa-long-arrow-left"></i>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="col-sm-3 p-0">
+                           <div class="box box-right-mail-temp" id="sel_SFFieldsMail">
+                              <h2 class="box-title">Selected SF Fields</h2>
+                           </div>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                           <div class="box-center">
+                              <a class="btn click-right-primary-mail-temp sm-btn-custom">
+                              <i class="fa fa-long-arrow-right"></i>
+                              </a>
+                              <a class="btn click-left-primary-mail-temp sm-btn-custom">
+                              <i class="fa fa-long-arrow-left"></i>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="col-sm-3 p-0">
+                           <div class="box box-primary-mail-temp">
+                              <h2 class="box-title">Selected SF Fields</h2>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-8">
+                     <input type="button" class="btn btn-bg-blue btn-edit mail-temp-sfdc-pre-btn" name="previous" value="Previous">
+                     <input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+                     <input type="button" class="btn btn-bg-blue mail-temp-sfdc-save-next" name="save" value="Save & Next">
+                  </div>
+               </div>
+               <div class="row external-parameter-mail-temp-main" style="display: none;">
+                  <div class="row">
+                     <div class="col-sm-10">
+                        <h5>External Parameter Selected</h5>
+                     </div>
+                  </div>
+                  <div class="col-sm-9">
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <input type="text" class="form-control primary-key-ext-para-mail-temp" value="primary key" placeholder="Primary Key" disabled="disabled">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-3 text-right">
+                     <a class="btn btn-bg-orange-new sm-btn-custom web-services-add-mail-temp">Web Services</a>
+                     <a class="btn btn-bg-brown sm-btn-custom web-services-add-mail-temp">
+                     <i class="fa fa-plus"></i>
+                     </a>
+                  </div>
+                  <div class="col-sm-11 add-url-name-main-mail-temp"></div>
+                  <div class="col-sm-12">
+                     <div class="row">
+                        <div class="col-sm-11 web-services-mail-temp" style="display: none;">
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <div class="form-group addMore m-0">
+                                    <div class="row addMore-main">
+                                       <div class="col-sm-12 addMore-sub">
+                                          <div class="row">
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="URL" name="url" value="" id="web-services-url-mail-temp">
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Token" id="mailtemp_token">
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Username" id="mailtemp_user">
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <input type="password" class="form-control" placeholder="Password" id="mailtemp_pass">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-12">
+                                 <div class="form-group addMore m-0">
+                                    <div class="row addMore-main">
+                                       <div class="col-sm-12 addMore-sub mailtempipfld" id="mailtemp_ip">
+                                          <div class="row">
+                                             <div class="col-sm-12">
+                                                <label>Input Fields :</label>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Name" id="ip_mailtempFN">
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="ip_mailtempFT">
+                                                   <option value="">Field Type</option>
+                                                   <option value="1">Field Type 1</option>
+                                                   <option value="2">Field Type 2</option>
+                                                   <option value="3">Field Type 3</option>
+                                                </select>
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Length" id="ip_mailtempFL">
+                                             </div>
+                                             <div class="col-sm-3 p-0">
+                                                <a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addmailtempip"><i class="fa fa-plus"></i></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row addMore-copy" style="display: none;">
+                                       <div class="col-sm-12 addMore-sub">
+                                          <div class="row">
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Name" id="ip_mailtempFNCopy">
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="ip_mailtempFTCopy">
+                                                   <option value="">Field Type</option>
+                                                   <option value="1">Field Type 1</option>
+                                                   <option value="2">Field Type 2</option>
+                                                   <option value="3">Field Type 3</option>
+                                                </select>
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Length" id="ip_mailtempFLCopy">
+                                             </div>
+                                             <div class="col-sm-3 p-0">
+                                                <a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom">
+                                                <i class="fa fa-trash"></i>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-12">
+                                 <div class="form-group addMore">
+                                    <div class="row addMore-main">
+                                       <div class="col-sm-12 addMore-sub mailtempopfld" id="mailtemp_op">
+                                          <div class="row">
+                                             <div class="col-sm-12">
+                                                <label>Output Fields :</label>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Name" id="op_mailtempFN">
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="op_mailtempFT">
+                                                   <option value="">Field Type</option>
+                                                   <option value="1">Field Type 1</option>
+                                                   <option value="2">Field Type 2</option>
+                                                   <option value="3">Field Type 3</option>
+                                                </select>
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Length" id="op_mailtempFL">
+                                             </div>
+                                             <div class="col-sm-3 p-0">
+                                                <a class="btn btn-bg-brown add-more-btn sm-btn-custom" id="addmailtempop">
+                                                <i class="fa fa-plus"></i>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row addMore-copy" style="display: none;">
+                                       <div class="col-sm-12 addMore-sub">
+                                          <div class="row">
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Name" id="op_mailtempFNCopy">
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <select class="form-control bg-gray bg-gray selectpicker" data-live-search="true" id="op_mailtempFTCopy">
+                                                   <option value="">Field Type</option>
+                                                   <option value="1">Field Type 1</option>
+                                                   <option value="2">Field Type 2</option>
+                                                   <option value="3">Field Type 3</option>
+                                                </select>
+                                             </div>
+                                             <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="Field Length" id="op_mailtempFLCopy">
+                                             </div>
+                                             <div class="col-sm-3 p-0">
+                                                <a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom">
+                                                <i class="fa fa-trash"></i>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-11">
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group addMore">
+                                    <div class="row addMore-main">
+                                       <div class="col-sm-12 addMore-sub">
+                                          <div class="row">
+                                             <div class="col-sm-4">
+                                                <input type="file" name="file[]" class="test-xls" id="upload-xls-mail-temp" style="display: none;">
+                                                <label class="btn btn-bg-orange sm-btn-custom" for="upload-xls-mail-temp" title="Upload XLS">
+                                                <i class="fa fa-upload"></i>
+                                                </label>
+                                                <br>
+                                                <small class="test-xls-filename color-dark" id="upload-xls-filename-mail-temp">File Name</small>
+                                             </div>
+                                             <div class="col-sm-3 p-0">
+                                                <a class="btn btn-bg-brown add-more-btn-b-file sm-btn-custom">
+                                                <i class="fa fa-plus"></i>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="row addMore-copy" style="display: none;">
+                                       <div class="col-sm-12 addMore-sub">
+                                          <div class="row">
+                                             <div class="col-sm-4">
+                                                <input type="file" name="file[]" class="test-xls" id="upload-xls**1**" style="display: none;">
+                                                <label class="btn btn-bg-orange sm-btn-custom" for="upload-xls**1**" title="Upload XLS">
+                                                <i class="fa fa-upload"></i>
+                                                </label>
+                                                <br>
+                                                <small class="test-xls-filename color-dark" id="upload-xls-filename">File Name</small>
+                                             </div>
+                                             <div class="col-sm-3 p-0">
+                                                <a class="btn btn-bg-orange-new copy-remove-btn sm-btn-custom">
+                                                <i class="fa fa-trash"></i>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-12">
+                     <input type="button" class="btn btn-bg-blue btn-edit mail-temp-external-pre-next" name="previous" value="Previous">
+                     <input type="button" class="btn btn-bg-blue btn-edit" name="save" value="Save">
+                     <input type="button" class="btn btn-bg-blue mail-temp-external-save-next" name="save" value="Save & Next">
+                  </div>
+               </div>
+               <div class="row compose-clause-mail-temp-main" style="display: none;">
+                  <div class="col-sm-12 addMore-b">
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <label>From</label>
+                        </div>
+                        <div class="col-sm-4">
+                           <div class="form-group">
+                              <input type="text" class="form-control" placeholder="From" name="from" id="from">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <label>To</label>
+                        </div>
+                        <div class="col-sm-4">
+                           <div class="form-group">
+                              <input type="text" class="form-control" placeholder="To" name="to" id="to">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <label>Subject</label>
+                        </div>
+                        <div class="col-sm-4">
+                           <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Subject" name="subject" id="subject">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <label>Body</label>
+                        </div>
+                        <div class="col-sm-9">
+                           <textarea class="form-control" rows="4" name="editor-mail-body" id="body"></textarea>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <button class="btn btn-bg-orange sm-btn-custom" title="Download Attachment">
+                           <i class="fa fa-download"></i>
+                           </button>
+                        </div>
+                        <div class="col-sm-5">
+                           <textarea class="form-control" rows="4" name=""></textarea>
+                        </div>
+                     </div>
+                     <div class="form-group m-0">
+                        <div class="row">
+                           <div class="col-sm-12 addMore-sub">
+                              <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="check-advanced-compose-mail-temp">
+                                       <input id="checkAdvancedComposeMailTemp" type="checkbox" name="advanced-dynamic-doc" class="check-advanced-compose-mail-temp" />
+                                       <label for="checkAdvancedComposeMailTemp">
+                                          <div class="checkbox">
+                                             <i class="fa fa-check"></i>
+                                          </div>
+                                          <span>Advanced</span>
+                                       </label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row select-rule-compose-mail-temp" style="display: none;">
+                        <div class="col-sm-12 addMore-sub">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <label>Select Rule</label>
+                              </div>
+                              <div class="col-sm-4" id="sel_RuleMailTemp"></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row select-workflow-compose-mail-temp" style="display: none;">
+                        <div class="col-sm-12 addMore-sub">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <label>Select Workflow</label>
+                              </div>
+                              <div class="col-sm-4" id="Sel_WFMailTemp"></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row select-workflow-compose-mail-temp" style="display: none;">
+                        <div class="col-sm-12 addMore-sub">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <label>Select Controller</label>
+                              </div>
+                              <div class="col-sm-4">
+                                 <select class="form-control sf-object bg-gray selectpicker" data-live-search="true">
+                                    <option>--Select Controller Name--</option>
+                                    <option value="workflow-1">Controller 1</option>
+                                    <option class="workflow-2">Controller 2</option>
+                                    <option class="workflow-3">Controller 3</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group m-0">
+                        <div class="row">
+                           <div class="col-sm-12 addMore-sub">
+                              <input type="file" name="" id="upload-attachment" class="upload-attach" style="display: none;">
+                              <label class="btn btn-bg-orange sm-btn-custom" for="upload-attachment" title="Upload Attachment">
+                              <i class="fa fa-upload"></i>
+                              </label>
+                              <br>
+                              <small id="upload-attachment-filename" class="color-dark">File Name</small>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-6 col-sm-offset-3">
+                        <input type='button' class='btn btn-bg-blue btn-edit mail-temp-compose-pre-btn' name='previous' value='Previous' />
+                        <input type="button" class="btn btn-bg-blue btn-edit mail-temp-compose-save-btn" name="save" value="Save">
+                        <input type='button' class='btn mail-temp-compose-save-next-btn btn-fill btn-bg-blue btn-edit' name='next' value='Save & Next' />
+                     </div>
+                  </div>
+               </div>
+               <div class="row compose-clause-sms-temp-main" style="display: none;">
+                  <div class="col-sm-3">
+                     <h5>Compose SMS</h5>
+                  </div>
+                  <div class="col-sm-4">
+                     <textarea class="form-control" rows="3" name=""></textarea>
+                  </div>
+                  <div class="col-sm-12 addMore-b">
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <label>From</label>
+                        </div>
+                        <div class="col-sm-4">
+                           <div class="form-group">
+                              <input type="text" class="form-control" placeholder="From" name="from" id="from_no">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <label>To</label>
+                        </div>
+                        <div class="col-sm-4">
+                           <div class="form-group">
+                              <input type="text" class="form-control" placeholder="To" name="to" id="to_no">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-3">
+                           <label>Body</label>
+                        </div>
+                        <div class="col-sm-9">
+                           <textarea class="form-control" rows="4" name="editor-sms-body" id="sms_body"></textarea>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-6 col-sm-offset-3">
+                        <input type='button' class='btn btn-bg-blue btn-edit mail-temp-compose-pre-btn' name='previous' value='Previous' />
+                        <input type="button" class="btn btn-bg-blue btn-edit mail-temp-compose-save-btn" name="save" value="Save">
+                        <input type='button' class='btn mail-temp-compose-save-next-btn btn-fill btn-bg-blue btn-edit' name='next' value='Save & Next' />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

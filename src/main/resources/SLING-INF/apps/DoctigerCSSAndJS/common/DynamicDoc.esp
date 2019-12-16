@@ -1,0 +1,203 @@
+<div class="tab-pane dymanicDocumentmain" id="dymanicDocument">
+                            	<div class="row">
+	                            	<div class="col-sm-10 col-sm-offset-1 ">
+		                            	<div class="row">
+			                            	<div class="col-sm-12">
+			                                	<h4 class="info-text"> Dymanic Document</h4>
+			                            	</div>
+			                            	<div class="row">
+			                            		<div class="col-sm-8">
+											  		<button class="btn btn-bg-brown create-new-document-btn">Create New Document</button>
+			                            		</div>
+			                            	</div>
+			                            	<div class="row table-document-main">
+			                            		<div class="col-sm-12">
+			                            		
+			                            			<table class="table table-bordered table-document" id ="DynamicDocTable">
+			                            				<thead>
+			                            					<tr>
+			                            						<th>Document Name</th>
+			                            						<th>Download Format</th>
+			                            						<th>Created By</th>
+			                            						<th>Approved By</th>
+			                            						<th>Date</th>
+			                            						<th>Version</th>
+			                            						<th style="width: 190px;">Action</th>
+			                            					</tr>
+			                            				</thead>
+			                            				<tbody>
+			                            					
+			                            				</tbody>
+			                            			</table>
+			                            		</div>
+			                            	</div>
+			                            	<div class="col-sm-8 content-document-main" style="display: none;">
+			                            		<div class="form-group m-0">
+			                            		<p id="Dynamicerrormessage" ></p>
+			                            	
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Template Name</label>
+					                                			</div>
+					                                			<form>
+			                            		<input type=hidden id="DynamicTempType" name="DynamicTemType" />
+			                            		
+			                            		</form>
+					                                			<div class="col-sm-7">
+						                                			<input type="text" class="form-control" id="document_template_id" name="template_name" placeholder="Template Name">
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+				                                </div>
+			                            		<div class="form-group m-0">
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Output</label>
+					                                			</div>
+					                                			<div class="col-sm-7">
+					                                				<select class="form-control sf-object bg-gray selectpicker" id="document_outputFormat" data-live-search="true">
+					                                					<option>--Select Output--</option>
+					                                					<option value="Pdf-1">Pdf 1</option>
+					                                					<option class="Pdf-2">Pdf 2</option>
+					                                					<option class="Pdf-3">Pdf 3</option>
+					                                				</select>
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+			                                	<div class="form-group m-0">
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-4 col-sm-offset-3">
+														    		<div class="radio">
+																		<input type="radio" class="static-dynamic-doc" id="staticDynamicDoc" name="radio-group-dynamic-doc" checked>
+																		<label for="staticDynamicDoc">Static</label>
+																	</div>
+					                                			</div>	
+					                                			<div class="col-sm-4">
+														    		<div class="radio">
+																		<input type="radio" class="dynamic-dynamic-doc" id="dynamicDynamicDoc" name="radio-group-dynamic-doc">
+																		<label for="dynamicDynamicDoc">Dynamic</label>
+																	</div>
+					                                			</div>
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+			                            		<div class="form-group m-0 select-temp-dynamic-doc-main" style="display: none;">
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Select Template</label>
+					                                			</div>
+					                                			<div class="col-sm-7">
+					                                			<div id="tempforDynamic"></div>
+					                                				<!--  <select class="form-control sf-object bg-gray selectpicker" data-live-search="true">
+					                                					<option>--Select Template--</option>
+					                                					<option value="Name-1">Name 1</option>
+					                                					<option class="Name-2">Name 2</option>
+					                                					<option class="Name-3">Name 3</option>
+					                                				</select>-->
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+												</div> 
+												<div class="form-group m-0 select-rule-dynamic-doc-main" style="display: none;">
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Select Rule</label>
+					                                			</div>
+					                                			<div class="col-sm-7">
+					                                			<div id="ruleforDynamic"></div>
+					                                			
+					                                				<!--  <select class="form-control sf-object bg-gray selectpicker" data-live-search="true">
+					                                					<option>--Select Rule--</option>
+					                                					<option value="Rule-1">Rule 1</option>
+					                                					<option class="Rule-2">Rule 2</option>
+					                                					<option class="Rule-3">Rule 3</option>
+					                                				</select>-->
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+												</div>
+												<div class="form-group m-0">
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+					                                			<div class="col-sm-12">
+					                                				<div class="check-advanced-dynamic-doc">
+																	    <input id="checkAdvanced" type="checkbox" id ="advanced-dynamic-doc-id" name="advanced-dynamic-doc" class="advanced-dynamic-doc" />
+																	    <label for="checkAdvanced">
+																	      <div class="checkbox"><i class="fa fa-check"></i></div>
+																	      <span>Advanced</span>
+																	    </label>
+																  	</div>
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+												</div>
+												<div class="form-group m-0 dynamic-doc-controle-name-main" style="display: none;">
+			                                		
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Select Workflow</label>
+					                                			</div>
+					                                			<div class="col-sm-7">
+					                                			<div id= workflowforDynamic></div>
+					                                				<!--  <select class="form-control sf-object bg-gray selectpicker" data-live-search="true">
+					                                					<option>--Select Workflow--</option>
+					                                					<option value="Workflow-1">Workflow 1</option>
+					                                					<option class="Workflow-2">Workflow 2</option>
+					                                					<option class="Workflow-3">Workflow 3</option>
+					                                				</select>-->
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                		<div class="row">
+			                                			<div class="col-sm-12 addMore-sub">
+			                                				<div class="row">
+			                                					<div class="col-sm-3">
+														    		<label>Controller Name</label>
+					                                			</div>
+					                                			<div class="col-sm-7">
+					                                			  <div id= controllerforDynamic></div>
+					                                			
+					                                				<!--  <select class="form-control sf-object bg-gray selectpicker" data-live-search="true">
+					                                					<option>--Select Controller Name--</option>
+					                                					<option value="Controller-Name-1">Controller Name 1</option>
+					                                					<option class="Controller-Name-2">Controller Name 2</option>
+					                                					<option class="Controller-Name-3">Controller Name 3</option>
+					                                				</select>-->
+					                                			</div>	
+			                                				</div>
+			                                			</div>
+			                                		</div>
+			                                	</div>
+			                            	</div>
+		                            	</div>
+		                            	<div class="row content-btns-document-main" style="display: none;">
+											<div class="col-sm-12 text-center">
+                                    			<input type='button' class='btn btn-fill btn-bg-blue btn-edit document-previous-btn' name='previous' value='Previous' />
+									  			<input type="button" class="btn btn-bg-blue btn-edit document-save-btn" id="DynamicDocsave" name="save" value="Save">
+				                                <input type='button' class='btn btn-next btn-fill btn-bg-blue btn-edit' name='next' value='Next' />
+											</div>
+										</div>
+		                            </div>
+		                        </div>    	
+                            </div>
